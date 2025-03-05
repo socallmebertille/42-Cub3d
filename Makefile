@@ -20,7 +20,7 @@ SRCS_NAMES	=	main.c \
 				moves.c \
 				get_radius.c \
 				render_mini_map.c \
-				put_img.c \
+				put_img.c 
 				
 OBJS_NAMES	=	$(SRCS_NAMES:.c=.o)
 SRCS		=	$(addprefix $(SRCS_DIR)/,$(SRCS_NAMES))
