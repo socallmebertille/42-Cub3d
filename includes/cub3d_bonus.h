@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bertille <bertille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/05 17:14:00 by bertille         ###   ########.fr       */
+/*   Updated: 2025/03/05 17:10:56 by bertille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include "../libft/includes/libft.h"
 # include "../minilibx-linux/mlx.h"
@@ -91,6 +91,8 @@ typedef struct s_ray
 	t_player	delta;
 	t_player	step;
 	t_player	side_dist;
+	// int			door_d;
+	// int			door_p;
 }				t_ray;
 
 typedef struct s_game
@@ -113,56 +115,65 @@ typedef struct s_game
 	t_img		*choice_pic;
 }				t_game;
 
-// ---------------- check_map_file.c -------------------------
+// ---------------- check_map_file_bonus.c -------------------------
 int				check_map_file(char *map_file, t_game *game);
 
-// ---------------- free.c -------------------------
+// ---------------- free_bonus.c -------------------------
 void			free_all(t_game *game);
 void			quite_game(t_game *game);
 
-// ---------------- get_texture.c -------------------------
+// ---------------- get_texture_bonus.c -------------------------
 int				map_texture2(t_game *game, t_param *param);
 int				map_texture(t_game *game, t_param *param);
 int				path_texture(t_param *param);
 
-// ---------------- map_file_parse.c -------------------------
+// ---------------- map_file_parse_bonus.c -------------------------
 void			map_file_parse(t_game *game);
 
-// ---------------- create_rgb.c -------------------------
+// ---------------- create_rgb_bonus.c -------------------------
 int				create_rgb(t_game *game, int r, int g, int b);
 
-// ---------------- recup_color.c -------------------------
+// ---------------- recup_color_bonus.c -------------------------
 int				map_color(t_game *game, t_param *param);
 
-// ---------------- check_color.c -------------------------
+// ---------------- check_color_bonus.c -------------------------
 int				check_value(t_game *game, t_param *param);
 
-// ---------------- map_parse.c -------------------------
+// ---------------- map_parse_bonus.c -------------------------
 int				recup_map(char **file, t_game *game);
 int				check_char(char **map, t_game *game);
 
-// ---------------- map_access.c.c -------------------------
+// ---------------- map_access_bonus.c.c -------------------------
 int				flood_fill_check(t_game *game);
 
-// ---------------- utils.c -------------------------
+// ---------------- utils_bonus.c -------------------------
 void			write_err(char *str);
 void			put_pixel_to_img(t_img *img, int x, int y, int color);
 int				get_pixel_color(t_img *texture, int x, int y);
 char			*ft_strncpy(char *dest, const char *src, size_t n);
 char			*substring_until_char(const char *str, char delimiter);
 
-// ---------------- moves.c-----------------------
+// ---------------- moves_bonus.c-----------------------
 void			move_north(t_game *game);
 void			move_south(t_game *game);
 void			move_west(t_game *game);
 void			move_east(t_game *game);
 
-// ---------------- render_game.c-----------------------
+// ---------------- get_radius_bonus.c-----------------------
+void			len_raycasting(t_game *game, float angle, t_player *hit);
+void			draw_radius(t_game *game, t_player play);
+// void			raycast(t_game *game, float ra, t_player *hit);
+
+// ---------------- render_mini_map_bonus.c-----------------------
+void			draw_line(t_game *game, t_player play, t_player *hit);
+void			render_mini_map(t_game *game);
+
+// ---------------- render_game_bonus.c-----------------------
 int				render_game(t_game *game);
 
-// ---------------- put_img.c-----------------------
+// ---------------- put_img_bonus.c-----------------------
 void			put_img(t_game *game, float angle_step, float angle_start);
 
-// ---------------- main.c -------------------------
+// ---------------- main_bonus.c -------------------------
 
 #endif
