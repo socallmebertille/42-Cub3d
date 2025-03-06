@@ -19,7 +19,7 @@ Cub3D est un projet graphique en C inspiré du jeu classique Wolfenstein 3D, dé
 
 * Extraction et validation des couleurs plafond et sol (map_color, check_colors, check_value).
 
-### Création de la carte (map_file_parse, recup_map):
+### Lecture de la carte (map_file_parse, recup_map):
 
 * Stockage de la carte en mémoire (malloc_map).
 
