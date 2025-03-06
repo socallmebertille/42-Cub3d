@@ -5,29 +5,29 @@ Cub3D est un projet graphique en C inspiré du jeu classique Wolfenstein 3D, dé
 
 ## Étapes du parsing
 
-Vérification initiale (check_map_file) :
+### Vérification initiale (check_map_file) :
 
-Vérification de l'extension du fichier (.cub).
+####Vérification de l'extension du fichier (.cub).
 
-Ouverture et lecture du fichier (read_map).
+####Ouverture et lecture du fichier (read_map).
 
-Lecture des paramètres :
+### Lecture des paramètres :
 
-Extraction des textures (map_texture, map_texture2).
+####Extraction des textures (map_texture, map_texture2).
 
-Vérification des chemins vers les textures (path_texture).
+####Vérification des chemins vers les textures (path_texture).
 
-Extraction et validation des couleurs plafond et sol (map_color, check_colors, check_value).
+####Extraction et validation des couleurs plafond et sol (map_color, check_colors, check_value).
 
-Création de la carte (map_file_parse, recup_map):
+### Création de la carte (map_file_parse, recup_map):
 
-Stockage de la carte en mémoire (malloc_map).
+####Stockage de la carte en mémoire (malloc_map).
 
-Vérification des caractères valides et du joueur unique (check_char).
+####Vérification des caractères valides et du joueur unique (check_char).
 
-Vérification de l'intégrité de la carte (flood_fill_check):
+### Vérification de l'intégrité de la carte (flood_fill_check):
 
-Utilisation de l'algorithme Flood-Fill pour s'assurer que tous les espaces accessibles sont entourés de murs (comme pour so_long).
+####Utilisation de l'algorithme Flood-Fill pour s'assurer que tous les espaces accessibles sont entourés de murs (comme pour so_long).
 
 ## Logique du Raycasting
 
