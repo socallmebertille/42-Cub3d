@@ -1,7 +1,6 @@
 # 42-Cub3d : My first RayCaster with miniLibX
 
-Cub3D est un projet graphique en C inspiré du jeu culte Wolfenstein 3D.
-Wolfenstein 3D est généralement considéré comme le grand-père des jeux de tir en trois dimensions43,44 et plus spécifiquement des jeux de tir à la première personne.
+Cub3D est un projet graphique en C inspiré du jeu culte Wolfenstein 3D, généralement considéré comme le grand-père des jeux de tir en trois dimensions et plus spécifiquement des jeux de tir à la première personne.
 Le projet génère une visualisation 3D à partir d'une carte 2D définie par l'utilisateur dans un fichier .cub.
 
 
