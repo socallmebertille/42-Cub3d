@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_radius.c                                       :+:      :+:    :+:   */
+/*   get_radius_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bertille <bertille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 00:38:44 by bertille          #+#    #+#             */
-/*   Updated: 2025/03/04 17:02:25 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/05 17:09:02 by bertille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	len_raycasting(t_game *game, float angle, t_player *hit)
 {
