@@ -29,7 +29,7 @@ Vérification de l'intégrité de la carte (flood_fill_check):
 
 Utilisation de l'algorithme Flood-Fill pour s'assurer que tous les espaces accessibles sont entourés de murs (comme pour so_long).
 
-##Logique du Raycasting
+## Logique du Raycasting
 
 Initialisation du joueur (init_player, recup_player):
 
