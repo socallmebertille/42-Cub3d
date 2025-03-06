@@ -7,7 +7,7 @@ Cub3D est un projet graphique en C inspiré du jeu classique Wolfenstein 3D, dé
 
 ### Vérification initiale (check_map_file) :
 
-Vérification de l'extension du fichier (.cub).
+* Vérification de l'extension du fichier (.cub).
 
 Ouverture et lecture du fichier (read_map).
 
