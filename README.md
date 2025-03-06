@@ -1,11 +1,9 @@
-# 42-Cub3d
-My first RayCaster with miniLibX
-
+# 42-Cub3d : My first RayCaster with miniLibX
 
 Cub3D est un projet graphique en C inspiré du jeu classique Wolfenstein 3D, développé dans le cadre du cursus de l'école 42. Le projet génère une visualisation 3D à partir d'une carte 2D définie par l'utilisateur dans un fichier .cub.
 
 
-###Étapes du parsing
+##Étapes du parsing
 
 Vérification initiale (check_map_file) :
 
@@ -31,7 +29,7 @@ Vérification de l'intégrité de la carte (flood_fill_check):
 
 Utilisation de l'algorithme Flood-Fill pour s'assurer que tous les espaces accessibles sont entourés de murs (comme pour so_long).
 
-###Logique du Raycasting
+##Logique du Raycasting
 
 Initialisation du joueur (init_player, recup_player):
 
