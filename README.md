@@ -3,7 +3,7 @@
 Cub3D est un projet graphique en C inspiré du jeu classique Wolfenstein 3D, développé dans le cadre du cursus de l'école 42. Le projet génère une visualisation 3D à partir d'une carte 2D définie par l'utilisateur dans un fichier .cub.
 
 
-##Étapes du parsing
+## Étapes du parsing
 
 Vérification initiale (check_map_file) :
 
