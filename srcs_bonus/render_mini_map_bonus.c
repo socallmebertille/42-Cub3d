@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_mini_map_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bertille <bertille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 14:15:22 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/05 17:09:49 by bertille         ###   ########.fr       */
+/*   Updated: 2025/03/07 11:53:28 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	draw_square(t_game *game, int color, int start_x, int start_y)
 		j = 0;
 		while (j < PX)
 		{
-			put_pixel_to_img(&game->img, start_x + j, start_y + i, color);
+			put_pixel_to_img(game, start_x + j, start_y + i, color);
 			j++;
 		}
 		i++;
@@ -41,7 +41,7 @@ static void	draw_player(t_game *game, int color, float x, float y)
 		j = 0 - (PX / 2);
 		while (j < PX / 2)
 		{
-			put_pixel_to_img(&game->img, (int)x + j, (int)y + i, color);
+			put_pixel_to_img(game, (int)x + j, (int)y + i, color);
 			j++;
 		}
 		i++;
@@ -63,7 +63,7 @@ void	draw_line(t_game *game, t_player play, t_player *hit)
 	i = 0;
 	while (i < steps)
 	{
-		put_pixel_to_img(&game->img, (int)line.x, (int)line.y, 0xff0000);
+		put_pixel_to_img(game, (int)line.x, (int)line.y, 0xff0000);
 		line.x += increment.x;
 		line.y += increment.y;
 		i++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/07 10:52:34 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/07 11:43:02 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
+	int			win_width;
+	int			win_height;
 	int			map_fd;
 	int			height_map;
 	float		degree;
@@ -146,7 +148,7 @@ int				flood_fill_check(t_game *game);
 
 // ---------------- utils.c -------------------------
 void			write_err(char *str);
-void			put_pixel_to_img(t_img *img, int x, int y, int color);
+void			put_pixel_to_img(t_game *game, int x, int y, int color);
 int				get_pixel_color(t_img *texture, int x, int y);
 char			*ft_strncpy(char *dest, const char *src, size_t n);
 char			*substring_until_char(const char *str, char delimiter);

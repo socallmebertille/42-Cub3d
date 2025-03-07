@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/05 15:53:55 by melinaaam        ###   ########.fr       */
+/*   Updated: 2025/03/07 11:52:34 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,9 @@
 # define NO_PATH_EA "Error\nInvalid path to EA texture.\n"
 # define MISS_WALL "Error\nThe map isn't surrounded by walls\n"
 # define WRONG_CHAR "Error\nThere is at least one wrong character in map\n"
-# define WIDTH 1500
-# define HEIGHT 1000
-#define MAX_MAP_WIDTH 100
-#define MAX_MAP_HEIGHT 100
-# define PX 10
+# define MAX_MAP_WIDTH 100
+# define MAX_MAP_HEIGHT 100
+# define PX 10 //nb de pixels d'une case de mini map
 # define M_PI 3.14159265358979323846
 # define M_PI_2 1.57079632679489661923 /* pi/2 */
 # define SPEED 0.1 //0.03

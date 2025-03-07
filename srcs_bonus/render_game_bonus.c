@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_game_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bertille <bertille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:40:43 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/05 17:09:45 by bertille         ###   ########.fr       */
+/*   Updated: 2025/03/07 11:51:06 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	render_game(t_game *game)
 		move_view_west(game);
 	else if (game->keys.view_east)
 		move_view_east(game);
-	put_img(game, (M_PI / 3) / WIDTH, (float)game->angle - (M_PI / 6));
+	put_img(game, (M_PI / 3) / game->win_width, (float)game->angle - (M_PI / 6));
 	render_mini_map(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 	return (0);

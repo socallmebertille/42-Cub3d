@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bertille <bertille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:33:20 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/05 17:09:54 by bertille         ###   ########.fr       */
+/*   Updated: 2025/03/07 11:49:17 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-void	put_pixel_to_img(t_img *img, int x, int y, int color)
+void	put_pixel_to_img(t_game *game, int x, int y, int color)
 {
 	char	*dst;
 
-	if (x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT)
+	if (x < 0 || y < 0 || x >= game->win_width || y >= game->win_height)
 		return ;
-	dst = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	dst = game->img.addr + (y * game->img.line_len + x * (game->img.bpp / 8));
 	*(unsigned int *)dst = color;
 }
 
@@ -26,7 +26,7 @@ int	get_pixel_color(t_img *texture, int x, int y)
 {
 	char	*pixel;
 
-	if (x < 0 || x > 48 || y < 0 || y > 48)
+	if (x < 0 || x > texture->w_width || y < 0 || y > texture->w_height)
 		return (0xFFFFFF);
 	pixel = texture->addr + (y * texture->line_len + x * (texture->bpp / 8));
 	return (*(unsigned int *)pixel);

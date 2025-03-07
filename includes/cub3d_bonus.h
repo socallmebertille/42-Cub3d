@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bertille <bertille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/05 17:10:56 by bertille         ###   ########.fr       */
+/*   Updated: 2025/03/07 11:49:55 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
+	int			win_width;
+	int			win_height;
 	int			map_fd;
 	int			height_map;
 	float		degree;
@@ -148,7 +150,7 @@ int				flood_fill_check(t_game *game);
 
 // ---------------- utils_bonus.c -------------------------
 void			write_err(char *str);
-void			put_pixel_to_img(t_img *img, int x, int y, int color);
+void			put_pixel_to_img(t_game *game, int x, int y, int color);
 int				get_pixel_color(t_img *texture, int x, int y);
 char			*ft_strncpy(char *dest, const char *src, size_t n);
 char			*substring_until_char(const char *str, char delimiter);
@@ -162,7 +164,6 @@ void			move_east(t_game *game);
 // ---------------- get_radius_bonus.c-----------------------
 void			len_raycasting(t_game *game, float angle, t_player *hit);
 void			draw_radius(t_game *game, t_player play);
-// void			raycast(t_game *game, float ra, t_player *hit);
 
 // ---------------- render_mini_map_bonus.c-----------------------
 void			draw_line(t_game *game, t_player play, t_player *hit);

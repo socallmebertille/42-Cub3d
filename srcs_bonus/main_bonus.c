@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bertille <bertille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:52:35 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/05 17:09:12 by bertille         ###   ########.fr       */
+/*   Updated: 2025/03/07 11:52:19 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,11 @@ static void	mlx_initialize(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		return (write_err(MALLOC), free_all(game), exit(1));
-	game->win = mlx_new_window(game->mlx, WIDTH, HEIGHT, "Cub3D");
+	mlx_get_screen_size(game->mlx, &game->win_width, &game->win_height);
+	game->win = mlx_new_window(game->mlx, game->win_width, game->win_height, "Cub3D");
 	if (!game->win)
 		return (write_err(MALLOC), free_all(game), exit(1));
-	game->img.img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
+	game->img.img = mlx_new_image(game->mlx, game->win_width, game->win_height);
 	if (!game->img.img)
 		return (write_err("Error\nDisplay window failed\n"), free_all(game),
 			exit(1));
