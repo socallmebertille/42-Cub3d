@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bertille <bertille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:16:05 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/05 17:08:54 by bertille         ###   ########.fr       */
+/*   Updated: 2025/03/07 15:34:11 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,28 @@ static void	free_param(t_param *param)
 	free_param2(param);
 }
 
+static void	free_handlebars(t_game *game)
+{
+	if (game->pics->straight)
+	{
+		mlx_destroy_image(game->mlx, game->pics->straight->img);
+		free(game->pics->straight);
+		game->pics->straight = NULL;
+	}
+	if (game->pics->left)
+	{
+		mlx_destroy_image(game->mlx, game->pics->left->img);
+		free(game->pics->left);
+		game->pics->left = NULL;
+	}
+	if (game->pics->right)
+	{
+		mlx_destroy_image(game->mlx, game->pics->right->img);
+		free(game->pics->right);
+		game->pics->right = NULL;
+	}
+}
+
 static void	free_pics(t_game *game)
 {
 	if (game->pics->wall_n)
@@ -79,6 +101,7 @@ static void	free_pics(t_game *game)
 		free(game->pics->wall_e);
 		game->pics->wall_e = NULL;
 	}
+	free_handlebars(game);
 	free(game->pics);
 }
 
