@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
+/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:23:14 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/06 15:18:33 by melinaaam        ###   ########.fr       */
+/*   Updated: 2025/03/07 10:55:39 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,34 +112,6 @@ int	recup_map(char **file, t_game *game)
 // 	game->check_map[len] = NULL;
 // 	return (0);
 // }
-
-static void	init_player(t_game *game, char dir)
-{
-	if (dir == 'N')
-	{
-		game->degree = 270;
-		game->dir = (t_player){.x = 0.0, .y = -1.0};
-		game->plane = (t_player){.x = 0.66, .y = 0};
-	}
-	else if (dir == 'S')
-	{
-		game->degree = 90;
-		game->dir = (t_player){.x = 0.0, .y = 1.0};
-		game->plane = (t_player){.x = -0.66, .y = 0};
-	}
-	else if (dir == 'W')
-	{
-		game->degree = 180;
-		game->dir = (t_player){.x = -1.0, .y = 0.0};
-		game->plane = (t_player){.x = 0, .y = -0.66};
-	}
-	else if (dir == 'E')
-	{
-		game->degree = 0;
-		game->dir = (t_player){.x = 1.0, .y = 0.0};
-		game->plane = (t_player){.x = 0, .y = 0.66};
-	}
-}
 
 static void	recup_player(char *map, t_game *game, int y)
 {
