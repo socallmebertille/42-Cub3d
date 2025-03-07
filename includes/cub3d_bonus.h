@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/07 11:49:55 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/07 16:25:05 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ typedef struct s_pics
 	t_img		*wall_s;
 	t_img		*wall_w;
 	t_img		*wall_e;
+	t_img		*straight;
+	t_img		*left;
+	t_img		*right;
 }				t_pics;
 
 typedef struct s_player
@@ -91,8 +94,6 @@ typedef struct s_ray
 	t_player	delta;
 	t_player	step;
 	t_player	side_dist;
-	// int			door_d;
-	// int			door_p;
 }				t_ray;
 
 typedef struct s_game
@@ -168,6 +169,9 @@ void			draw_radius(t_game *game, t_player play);
 // ---------------- render_mini_map_bonus.c-----------------------
 void			draw_line(t_game *game, t_player play, t_player *hit);
 void			render_mini_map(t_game *game);
+
+// ---------------- render_handlebars.c-----------------------
+void			render_handlebars(t_game *game);
 
 // ---------------- render_game_bonus.c-----------------------
 int				render_game(t_game *game);

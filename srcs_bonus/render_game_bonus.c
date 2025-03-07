@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:40:43 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/07 11:51:06 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/07 15:19:22 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	render_game(t_game *game)
 		move_view_east(game);
 	put_img(game, (M_PI / 3) / game->win_width, (float)game->angle - (M_PI / 6));
 	render_mini_map(game);
+	render_handlebars(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 	return (0);
 }
