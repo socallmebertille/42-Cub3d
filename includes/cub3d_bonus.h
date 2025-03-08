@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/07 16:25:05 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/08 19:42:50 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <float.h>
 # include <math.h>
 # include <unistd.h>
+# include <sys/time.h>
 
 typedef struct s_colors
 {
@@ -36,8 +37,8 @@ typedef struct s_img
 	void		*img;
 	int			bpp;
 	int			line_len;
-	int			w_height;
-	int			w_width;
+	int			h;
+	int			w;
 	int			endian;
 	char		*addr;
 }				t_img;
@@ -56,13 +57,16 @@ typedef struct s_param
 
 typedef struct s_pics
 {
+	long long	start_sprite;
 	t_img		*wall_n;
 	t_img		*wall_s;
 	t_img		*wall_w;
 	t_img		*wall_e;
 	t_img		*straight;
-	t_img		*left;
-	t_img		*right;
+	t_img		*left_0;
+	t_img		*left_1;
+	t_img		*right_0;
+	t_img		*right_1;
 }				t_pics;
 
 typedef struct s_player
@@ -116,6 +120,7 @@ typedef struct s_game
 	t_pics		*pics;
 	t_img		img;
 	t_img		*choice_pic;
+	t_img		*player_sprite;
 }				t_game;
 
 // ---------------- check_map_file_bonus.c -------------------------
@@ -153,8 +158,12 @@ int				flood_fill_check(t_game *game);
 void			write_err(char *str);
 void			put_pixel_to_img(t_game *game, int x, int y, int color);
 int				get_pixel_color(t_img *texture, int x, int y);
+long long		timestamp(void);
 char			*ft_strncpy(char *dest, const char *src, size_t n);
 char			*substring_until_char(const char *str, char delimiter);
+
+// ---------------- init_game_bonus.c -------------------------
+void			mlx_initialize(t_game *game);
 
 // ---------------- moves_bonus.c-----------------------
 void			move_north(t_game *game);

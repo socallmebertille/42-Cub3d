@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:16:05 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/07 15:34:11 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/08 13:59:23 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,29 @@ static void	free_handlebars(t_game *game)
 		free(game->pics->straight);
 		game->pics->straight = NULL;
 	}
-	if (game->pics->left)
+	if (game->pics->left_0)
 	{
-		mlx_destroy_image(game->mlx, game->pics->left->img);
-		free(game->pics->left);
-		game->pics->left = NULL;
+		mlx_destroy_image(game->mlx, game->pics->left_0->img);
+		free(game->pics->left_0);
+		game->pics->left_0 = NULL;
 	}
-	if (game->pics->right)
+	if (game->pics->left_1)
 	{
-		mlx_destroy_image(game->mlx, game->pics->right->img);
-		free(game->pics->right);
-		game->pics->right = NULL;
+		mlx_destroy_image(game->mlx, game->pics->left_1->img);
+		free(game->pics->left_1);
+		game->pics->left_1 = NULL;
+	}
+	if (game->pics->right_0)
+	{
+		mlx_destroy_image(game->mlx, game->pics->right_0->img);
+		free(game->pics->right_0);
+		game->pics->right_0 = NULL;
+	}
+	if (game->pics->right_1)
+	{
+		mlx_destroy_image(game->mlx, game->pics->right_1->img);
+		free(game->pics->right_1);
+		game->pics->right_1 = NULL;
 	}
 }
 

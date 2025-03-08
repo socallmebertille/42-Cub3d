@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:59:04 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/07 11:53:47 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/08 14:27:07 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ static void	draw_column(t_game *game, int col, t_player *pic)
 	y = 0;
 	while (y < start)
 		put_pixel_to_img(game, col, y++, game->param->c_colors.dec);
-	game->ray.text_step = (float)game->choice_pic->w_height / game->ray.lineheight;
+	game->ray.text_step = (float)game->choice_pic->h / game->ray.lineheight;
 	game->ray.text_pos = (start - game->win_height / 2 + game->ray.lineheight / 2)
 		* game->ray.text_step;
 	while (y <= end)
@@ -139,7 +139,7 @@ void	put_img(t_game *game, float angle_step, float angle_start)
 		choice_side_wall(game);
 		game->choice_pic = choice_pic(game, &pic);
 		pic.x = (int)((pic.x - floor(pic.x))
-				* (double)game->choice_pic->w_width);
+				* (double)game->choice_pic->w);
 		game->ray.lineheight = (int)(game->win_height / (game->ray.perpwalldist));
 		draw_column(game, col, &pic);
 		col++;

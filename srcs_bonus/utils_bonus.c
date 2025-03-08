@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:33:20 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/07 11:49:17 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/08 14:27:12 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,18 @@ int	get_pixel_color(t_img *texture, int x, int y)
 {
 	char	*pixel;
 
-	if (x < 0 || x > texture->w_width || y < 0 || y > texture->w_height)
+	if (x < 0 || x > texture->w || y < 0 || y > texture->h)
 		return (0xFFFFFF);
 	pixel = texture->addr + (y * texture->line_len + x * (texture->bpp / 8));
 	return (*(unsigned int *)pixel);
+}
+
+long long	timestamp(void)
+{
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return ((tv.tv_sec * 1000LL) + (tv.tv_usec / 1000));
 }
 
 void	write_err(char *str)

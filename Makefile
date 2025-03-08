@@ -35,6 +35,7 @@ SRCS_N_BONUS	=	main_bonus.c \
 					map_parse_bonus.c \
 					map_access_bonus.c \
 					create_rgb_bonus.c \
+					init_game_bonus.c \
 					utils_bonus.c \
 					free_bonus.c \
 					render_game_bonus.c \
