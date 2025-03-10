@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
+/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:52:35 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/07 15:50:28 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/10 18:27:08 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static int	ft_keypress(int keypress, t_game *game)
 		game->keys.view_west = 1;
 	else if (keypress == XK_Right)
 		game->keys.view_east = 1;
+	else if (keypress == XK_e)
+    	toggle_barrier(game);
 	return (0);
 }
 
@@ -68,6 +70,22 @@ static t_img	*init_pic(t_game *game, t_img *img, int id)
 	else if (id == 4)
 		img->img = mlx_xpm_file_to_image(game->mlx, game->param->ea,
 				&img->w_width, &img->w_height);
+	
+	else if (id == 5)
+		img->img = mlx_xpm_file_to_image(game->mlx, 
+		"textures/barrier/barrier_close.xpm", &img->w_width, &img->w_height);
+	else if (id == 6)
+		img->img = mlx_xpm_file_to_image(game->mlx, 
+		"textures/barrier/barrier_open.xpm", &img->w_width, &img->w_height);
+
+	else if (id == 7)
+		img->img = mlx_xpm_file_to_image(game->mlx, 
+		"textures/barrier/barrier_semi_open.xpm", &img->w_width, &img->w_height);
+		
+	else if (id == 8)
+		img->img = mlx_xpm_file_to_image(game->mlx, 
+		"textures/barrier/barrier_semi2_open.xpm", &img->w_width, &img->w_height);
+		
 	if (!img->img)
 		return (write_err("Error\nFailed to load textures\n"), free_all(game),
 			exit(1), NULL);
@@ -102,6 +120,12 @@ static void	mlx_initialize(t_game *game)
 	game->pics->wall_s = init_pic(game, game->pics->wall_s, 2);
 	game->pics->wall_w = init_pic(game, game->pics->wall_w, 3);
 	game->pics->wall_e = init_pic(game, game->pics->wall_e, 4);
+	game->pics->bar_close = init_pic(game, game->pics->bar_close, 5);
+	game->pics->bar_open = init_pic(game, game->pics->bar_open, 6);
+	game->pics->bar_semiopen = init_pic(game, game->pics->bar_semiopen, 7);
+	game->pics->bar_opopen = init_pic(game, game->pics->bar_opopen, 8);
+	game->barrier_o_c = 0;
+
 }
 
 int	main(int argc, char **argv)

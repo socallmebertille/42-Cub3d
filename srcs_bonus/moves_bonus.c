@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bertille <bertille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 19:43:48 by bertille          #+#    #+#             */
-/*   Updated: 2025/03/05 17:09:30 by bertille         ###   ########.fr       */
+/*   Updated: 2025/03/10 15:46:18 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static int	is_wall_collision(t_game *game, float x, float y)
 	if (y - map_y > 1 && game->map[map_y + 1][map_x] == '1')
 		return (1);
 	if (y - map_y < -0.5 && game->map[map_y - 1][map_x] == '1')
+		return (1);
+	if (game->map[map_y][map_x] == 'D' && game->barrier_o_c == 0)
 		return (1);
 	return (0);
 }

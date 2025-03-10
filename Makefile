@@ -42,7 +42,8 @@ SRCS_N_BONUS	=	main_bonus.c \
 					get_radius_bonus.c \
 					render_mini_map_bonus.c \
 					render_handlebars.c \
-					put_img_bonus.c
+					put_img_bonus.c \
+					barrier_bonus.c 
 OBJS_N_BONUS	=	$(SRCS_N_BONUS:.c=.o)
 SRCS_BONUS		=	$(addprefix $(SRCS_DIR_BONUS)/,$(SRCS_N_BONUS))
 OBJS_BONUS		=	$(addprefix $(OBJ_DIR_BONUS)/,$(OBJS_N_BONUS))

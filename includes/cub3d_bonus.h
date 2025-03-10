@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
+/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/07 16:25:05 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/10 18:09:54 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,10 @@ typedef struct s_pics
 	t_img		*straight;
 	t_img		*left;
 	t_img		*right;
+	t_img		*bar_open;
+	t_img		*bar_close;
+	t_img		*bar_semiopen;
+	t_img		*bar_opopen;
 }				t_pics;
 
 typedef struct s_player
@@ -104,6 +108,9 @@ typedef struct s_game
 	int			win_height;
 	int			map_fd;
 	int			height_map;
+	int			barrier_o_c;
+	int barrier_nb;         // entre 0 et 3
+	int barrier_framecount; // compteur pour gérer le "delay"
 	float		degree;
 	float		angle;
 	char		**map_file;
@@ -179,6 +186,9 @@ int				render_game(t_game *game);
 // ---------------- put_img_bonus.c-----------------------
 void			put_img(t_game *game, float angle_step, float angle_start);
 
+// ---------------- barrier_bonus.c-----------------------
+void			draw_barrier_state(t_game *game, int screen_x, int screen_y);
+void			toggle_barrier(t_game *game);
 // ---------------- main_bonus.c -------------------------
 
 #endif
