@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 19:43:48 by bertille          #+#    #+#             */
-/*   Updated: 2025/03/10 12:53:39 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:25:36 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	move_west(t_game *game)
 		game->player.x = new_x;
 	if (!is_wall_collision(game, game->player.x, new_y))
 		game->player.y = new_y;
+	game->pics->left = 1;
 }
 
 void	move_east(t_game *game)
@@ -82,4 +83,5 @@ void	move_east(t_game *game)
 		game->player.x = new_x;
 	if (!is_wall_collision(game, game->player.x, new_y))
 		game->player.y = new_y;
+	game->pics->left = 2;
 }

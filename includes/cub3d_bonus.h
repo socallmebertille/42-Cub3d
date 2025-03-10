@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/10 14:28:31 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:54:47 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_param
 typedef struct s_pics
 {
 	int			left;
+	int			step;
 	long long	start_sprite;
 	long long	end_sprite;
 	t_img		*wall_n;
@@ -181,7 +182,10 @@ void			draw_radius(t_game *game, t_player play);
 void			draw_line(t_game *game, t_player play, t_player *hit);
 void			render_mini_map(t_game *game);
 
-// ---------------- render_handlebars.c-----------------------
+// ---------------- update_handlebars_bonus.c-----------------------
+void			update_animation(t_game *game);
+
+// ---------------- render_handlebars_bonus.c-----------------------
 void			render_handlebars(t_game *game);
 
 // ---------------- render_game_bonus.c-----------------------

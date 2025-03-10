@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:40:43 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/10 12:53:46 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:44:34 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	move_view_west(t_game *game)
 	else if (game->degree == 360)
 		game->degree = 0;
 	game->angle = ((float)game->degree * M_PI / 180.0) - (0 - (2 * M_PI));
+	game->pics->left = 1;
 }
 
 static void	move_view_east(t_game *game)
@@ -30,6 +31,7 @@ static void	move_view_east(t_game *game)
 	else if (game->degree == 360)
 		game->degree = 0;
 	game->angle = ((float)game->degree * M_PI / 180.0) - (0 - (2 * M_PI));
+	game->pics->left = 2;
 }
 
 int	render_game(t_game *game)
