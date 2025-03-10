@@ -6,7 +6,7 @@
 /*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:40:43 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/10 18:07:31 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/10 18:33:41 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	render_game(t_game *game)
 	put_img(game, (M_PI / 3) / game->win_width, (float)game->angle - (M_PI / 6));
 	render_mini_map(game);
 	render_handlebars(game);
-	draw_barrier_state(game, 50, 50);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 	return (0);
 }
