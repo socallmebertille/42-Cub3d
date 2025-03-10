@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:59:04 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/08 14:27:07 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:36:23 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static t_img	*choice_pic(t_game *game, t_player *pic)
 	}
 }
 
-static void	choice_side_wall(t_game *game)
+static void	choice_side_wall(t_game *game, t_player *pic)
 {
 	int	hit;
 
@@ -86,6 +86,8 @@ static void	choice_side_wall(t_game *game)
 		if (game->map[(int)game->ray.map.y][(int)game->ray.map.x] == '1')
 			hit = 1;
 	}
+	game->choice_pic = choice_pic(game, pic);
+	game->ray.text_step = (float)game->choice_pic->h / game->ray.lineheight;
 }
 
 static void	draw_column(t_game *game, int col, t_player *pic)
@@ -103,14 +105,13 @@ static void	draw_column(t_game *game, int col, t_player *pic)
 	y = 0;
 	while (y < start)
 		put_pixel_to_img(game, col, y++, game->param->c_colors.dec);
-	game->ray.text_step = (float)game->choice_pic->h / game->ray.lineheight;
-	game->ray.text_pos = (start - game->win_height / 2 + game->ray.lineheight / 2)
-		* game->ray.text_step;
+	game->ray.text_pos = (start - game->win_height / 2 + game->ray.lineheight
+			/ 2) * game->ray.text_step;
 	while (y <= end)
 	{
 		pic->y = (int)game->ray.text_pos;
-		put_pixel_to_img(game, col, y++,
-			get_pixel_color(game->choice_pic, pic->x, pic->y));
+		put_pixel_to_img(game, col, y++, get_pixel_color(game->choice_pic,
+				pic->x, pic->y));
 		game->ray.text_pos += game->ray.text_step;
 	}
 	while (y < game->win_height - 1)
@@ -136,11 +137,10 @@ void	put_img(t_game *game, float angle_step, float angle_start)
 		game->ray.ray_dir = (t_player){cos(ray_angle), sin(ray_angle)};
 		game->ray.map = (t_player){(int)game->player.x, (int)game->player.y};
 		init_ray(game);
-		choice_side_wall(game);
-		game->choice_pic = choice_pic(game, &pic);
-		pic.x = (int)((pic.x - floor(pic.x))
-				* (double)game->choice_pic->w);
-		game->ray.lineheight = (int)(game->win_height / (game->ray.perpwalldist));
+		game->ray.lineheight = (int)(game->win_height
+				/ (game->ray.perpwalldist));
+		choice_side_wall(game, &pic);
+		pic.x = (int)((pic.x - floor(pic.x)) * (double)game->choice_pic->w);
 		draw_column(game, col, &pic);
 		col++;
 	}

@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:52:35 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/08 19:42:44 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/10 14:22:55 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ static int	ft_keypress(int keypress, t_game *game)
 		game->keys.view_west = 1;
 	else if (keypress == XK_Right)
 		game->keys.view_east = 1;
+	if (keypress == XK_a || keypress == XK_d
+		|| keypress == XK_Left || keypress == XK_Right)
+	{
+		game->pics->start_sprite = timestamp();
+		printf("start %lld\n", game->pics->start_sprite);
+	}
 	return (0);
 }
 
@@ -47,6 +53,12 @@ static int	ft_keyrelease(int keypress, t_game *game)
 		game->keys.view_west = 0;
 	else if (keypress == XK_Right)
 		game->keys.view_east = 0;
+	if (keypress == XK_a || keypress == XK_d
+		|| keypress == XK_Left || keypress == XK_Right)
+	{
+		game->pics->end_sprite = timestamp();
+		printf("end %lld\n", game->pics->end_sprite);
+	}
 	return (0);
 }
 

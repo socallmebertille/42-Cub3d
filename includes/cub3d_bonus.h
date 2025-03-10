@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/08 19:42:50 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/10 14:28:31 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ typedef struct s_param
 
 typedef struct s_pics
 {
+	int			left;
 	long long	start_sprite;
+	long long	end_sprite;
 	t_img		*wall_n;
 	t_img		*wall_s;
 	t_img		*wall_w;

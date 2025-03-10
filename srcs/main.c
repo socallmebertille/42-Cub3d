@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:52:35 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/07 11:39:55 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:25:11 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ static void	mlx_initialize(t_game *game)
 	if (!game->mlx)
 		return (write_err(MALLOC), free_all(game), exit(1));
 	mlx_get_screen_size(game->mlx, &game->win_width, &game->win_height);
-	game->win = mlx_new_window(game->mlx, game->win_width, game->win_height, "Cub3D");
+	game->win = mlx_new_window(game->mlx, game->win_width, game->win_height,
+			"Cub3D");
 	if (!game->win)
 		return (write_err(MALLOC), free_all(game), exit(1));
 	game->img.img = mlx_new_image(game->mlx, game->win_width, game->win_height);
@@ -109,10 +110,10 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	if (argc != 2)
-	return (write_err(RED "Error\nIncorrect number of args\n" RESET), 1);
+		return (write_err(RED "Error\nIncorrect number of args\n" RESET), 1);
 	ft_bzero(&game, sizeof(game));
 	if (check_map_file(argv[1], &game))
-	return (1);
+		return (1);
 	map_file_parse(&game);
 	mlx_initialize(&game);
 	mlx_loop_hook(game.mlx, &render_game, &game);
