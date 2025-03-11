@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
+/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:16:05 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/11 14:56:49 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:01:52 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ static void	free_pics_and_param(t_game *game)
 		free_one_img(game, game->pics->bar_open);
 		free_one_img(game, game->pics->bar_opopen);
 		free_one_img(game, game->pics->bar_semiopen);
-		free(game->pics);
-		game->pics = NULL;
 	}
 	if (game->param)
 	{
@@ -59,8 +57,6 @@ static void	free_pics_and_param(t_game *game)
 		free_one_param(game->param->ea);
 		free_one_param(game->param->floor_color);
 		free_one_param(game->param->ceiling_color);
-		free(game->param);
-		game->param = NULL;
 	}
 }
 
@@ -73,6 +69,16 @@ void	free_all(t_game *game)
 	if (game->check_map)
 		ft_free_tab(game->check_map);
 	free_pics_and_param(game);
+	if (game->param)
+	{
+		free(game->param);
+		game->param = NULL;
+	}
+	if (game->pics)
+	{
+		free(game->pics);
+		game->pics = NULL;
+	}
 	if (game->img.img)
 		mlx_destroy_image(game->mlx, game->img.img);
 	if (game->win)
@@ -84,7 +90,6 @@ void	free_all(t_game *game)
 
 void	quite_game(t_game *game)
 {
-	// mlx_mouse_show(game->mlx, game->win);
 	free_all(game);
 	exit(0);
 }

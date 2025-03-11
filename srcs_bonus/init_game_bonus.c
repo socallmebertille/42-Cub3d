@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
+/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 18:31:33 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/11 14:55:50 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:53:48 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,24 +68,7 @@ static t_img	*init_wall(t_game *game, t_img *img, int id)
 	return (img);
 }
 
-static void	init_pic(t_game *game)
-{
-	game->pics = (t_pics *)malloc(sizeof(t_pics));
-	if (!game->pics)
-		return (write_err(MALLOC), free_all(game), exit(1));
-	ft_bzero(game->pics, sizeof(t_pics));
-	game->pics->wall_n = init_wall(game, game->pics->wall_n, 1);
-	game->pics->wall_s = init_wall(game, game->pics->wall_s, 2);
-	game->pics->wall_w = init_wall(game, game->pics->wall_w, 3);
-	game->pics->wall_e = init_wall(game, game->pics->wall_e, 4);
-	game->pics->straight = init_handlebars(game, game->pics->straight, 1);
-	game->pics->left_0 = init_handlebars(game, game->pics->left_0, 2);
-	game->pics->left_1 = init_handlebars(game, game->pics->left_1, 3);
-	game->pics->right_0 = init_handlebars(game, game->pics->right_0, 4);
-	game->pics->right_1 = init_handlebars(game, game->pics->right_1, 5);
-}
-
-static t_img	*init_pic2(t_game *game, t_img *img, int id)
+static t_img	*init_door(t_game *game, t_img *img, int id)
 {
 	img = (t_img *)malloc(sizeof(t_img));
 	if (!img)
@@ -114,6 +97,28 @@ static t_img	*init_pic2(t_game *game, t_img *img, int id)
 	return (img);
 }
 
+static void	init_pic(t_game *game)
+{
+	game->pics = (t_pics *)malloc(sizeof(t_pics));
+	if (!game->pics)
+		return (write_err(MALLOC), free_all(game), exit(1));
+	ft_bzero(game->pics, sizeof(t_pics));
+	game->pics->wall_n = init_wall(game, game->pics->wall_n, 1);
+	game->pics->wall_s = init_wall(game, game->pics->wall_s, 2);
+	game->pics->wall_w = init_wall(game, game->pics->wall_w, 3);
+	game->pics->wall_e = init_wall(game, game->pics->wall_e, 4);
+	game->pics->straight = init_handlebars(game, game->pics->straight, 1);
+	game->pics->left_0 = init_handlebars(game, game->pics->left_0, 2);
+	game->pics->left_1 = init_handlebars(game, game->pics->left_1, 3);
+	game->pics->right_0 = init_handlebars(game, game->pics->right_0, 4);
+	game->pics->right_1 = init_handlebars(game, game->pics->right_1, 5);
+	game->pics->bar_close = init_door(game, game->pics->bar_close, 5);
+	game->pics->bar_open = init_door(game, game->pics->bar_open, 6);
+	game->pics->bar_semiopen = init_door(game, game->pics->bar_semiopen, 7);
+	game->pics->bar_opopen = init_door(game, game->pics->bar_opopen, 8);
+	game->barrier_o_c = 0;
+}
+
 void	mlx_initialize(t_game *game)
 {
 	game->mlx = mlx_init();
@@ -131,11 +136,6 @@ void	mlx_initialize(t_game *game)
 	game->img.addr = mlx_get_data_addr(game->img.img, &game->img.bpp,
 			&game->img.line_len, &game->img.endian);
 	init_pic(game);
-	game->pics->bar_close = init_pic2(game, game->pics->bar_close, 5);
-	game->pics->bar_open = init_pic2(game, game->pics->bar_open, 6);
-	game->pics->bar_semiopen = init_pic2(game, game->pics->bar_semiopen, 7);
-	game->pics->bar_opopen = init_pic2(game, game->pics->bar_opopen, 8);
-	game->barrier_o_c = 0;
 	mlx_mouse_move(game->mlx, game->win, game->win_width / 2, game->win_height
 		/ 2);
 	game->mouse.x = game->win_width / 2;

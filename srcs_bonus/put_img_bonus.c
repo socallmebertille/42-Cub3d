@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_img_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
+/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:59:04 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/11 14:53:11 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:57:40 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,61 +40,13 @@ static void	init_ray(t_game *game)
 	}
 }
 
-// static t_img	*choice_pic(t_game *game, t_player *pic)
-// {
-// 	if (game->ray.side == 0)
-// 	{
-// 		game->ray.perpwalldist = (game->ray.map.x - game->player.x + (1
-// 					- game->ray.step.x) / 2) / game->ray.ray_dir.x;
-// 		pic->x = game->player.y + game->ray.perpwalldist * game->ray.ray_dir.y;
-// 		if (game->ray.ray_dir.x > 0)
-// 			return (game->pics->wall_w);
-// 		else
-// 			return (game->pics->wall_e);
-// 	}
-// 	else
-// 	{
-// 		game->ray.perpwalldist = (game->ray.map.y - game->player.y + (1
-// 					- game->ray.step.y) / 2) / game->ray.ray_dir.y;
-// 		pic->x = game->player.x + game->ray.perpwalldist * game->ray.ray_dir.x;
-// 		if (game->ray.ray_dir.y > 0)
-// 			return (game->pics->wall_n);
-// 		else
-// 			return (game->pics->wall_s);
-// 	}
-// }
-
 static t_img	*choice_pic(t_game *game, t_player *pic)
 {
-	char	c;
-
-	c = game->map[(int)game->ray.map.y][(int)game->ray.map.x];
 	if (game->ray.side == 0)
 	{
 		game->ray.perpwalldist = (game->ray.map.x - game->player.x + (1
 					- game->ray.step.x) / 2) / game->ray.ray_dir.x;
 		pic->x = game->player.y + game->ray.perpwalldist * game->ray.ray_dir.y;
-	}
-	else
-	{
-		game->ray.perpwalldist = (game->ray.map.y - game->player.y + (1
-					- game->ray.step.y) / 2) / game->ray.ray_dir.y;
-		pic->x = game->player.x + game->ray.perpwalldist * game->ray.ray_dir.x;
-	}
-	if (c == 'D')
-	{
-		// Selon la valeur de barrier_o_c, on choisit la texture
-		if (game->barrier_o_c == 0)
-			return (game->pics->bar_close);
-		else if (game->barrier_o_c == 1)
-			return (game->pics->bar_semiopen);
-		else if (game->barrier_o_c == 2)
-			return (game->pics->bar_opopen);
-		else // == 3 par exemple
-			return (game->pics->bar_open);
-	}
-	if (game->ray.side == 0)
-	{
 		if (game->ray.ray_dir.x > 0)
 			return (game->pics->wall_w);
 		else
@@ -102,6 +54,9 @@ static t_img	*choice_pic(t_game *game, t_player *pic)
 	}
 	else
 	{
+		game->ray.perpwalldist = (game->ray.map.y - game->player.y + (1
+					- game->ray.step.y) / 2) / game->ray.ray_dir.y;
+		pic->x = game->player.x + game->ray.perpwalldist * game->ray.ray_dir.x;
 		if (game->ray.ray_dir.y > 0)
 			return (game->pics->wall_n);
 		else
@@ -130,7 +85,7 @@ static void	choice_side_wall(t_game *game, t_player *pic)
 			game->ray.side = 1;
 		}
 		c = game->map[(int)game->ray.map.y][(int)game->ray.map.x];
-		if (c == '1' || c == 'D')
+		if (c == '1')
 			hit = 1;
 	}
 	game->choice_pic = choice_pic(game, pic);
@@ -142,7 +97,6 @@ static void	draw_column(t_game *game, int col, t_player *pic)
 	int	start;
 	int	end;
 	int	y;
-	int	color;
 
 	start = (game->win_height - game->ray.lineheight) / 2;
 	if (start < 0)
@@ -156,20 +110,11 @@ static void	draw_column(t_game *game, int col, t_player *pic)
 	game->ray.text_step = (float)game->choice_pic->h / game->ray.lineheight;
 	game->ray.text_pos = (start - game->win_height / 2 + game->ray.lineheight
 			/ 2) * game->ray.text_step;
-	// while (y <= end)
-	// {
-	// 	pic->y = (int)game->ray.text_pos;
-	// 	put_pixel_to_img(game, col, y++,
-	// 		get_pixel_color(game->choice_pic, pic->x, pic->y));
-	// 	game->ray.text_pos += game->ray.text_step;
-	// }
 	while (y <= end)
 	{
 		pic->y = (int)game->ray.text_pos;
-		color = get_pixel_color(game->choice_pic, pic->x, pic->y);
-		if ((color & 0x00FFFFFF) != 0xFF00FF)
-			put_pixel_to_img(game, col, y, color);
-		y++;
+		put_pixel_to_img(game, col, y++,
+			get_pixel_color(game->choice_pic, pic->x, pic->y));
 		game->ray.text_pos += game->ray.text_step;
 	}
 	while (y < game->win_height - 1)

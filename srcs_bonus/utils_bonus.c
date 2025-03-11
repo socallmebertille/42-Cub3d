@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
+/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:33:20 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/11 14:18:04 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:58:28 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,3 @@ char	*substring_until_char(const char *str, char delimiter)
 	result[length] = '\0';
 	return (result);
 }
-

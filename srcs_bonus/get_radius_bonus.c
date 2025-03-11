@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_radius_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bertille <bertille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 00:38:44 by bertille          #+#    #+#             */
-/*   Updated: 2025/03/05 17:09:02 by bertille         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:45:55 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	len_raycasting(t_game *game, float angle, t_player *hit)
 	while (game->map[(int)y][(int)x])
 	{
 		if (game->map[(int)(y + dy * step_size)][(int)(x + dx
-				* step_size)] == '1')
+				* step_size)] == '1' || game->map[(int)(y + dy
+				* step_size)][(int)(x + dx * step_size)] == 'D')
 			break ;
 		x += dx * step_size;
 		y += dy * step_size;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
+/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/11 14:36:34 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:56:22 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ typedef struct s_keys
 	int			east;
 	int			view_west;
 	int			view_east;
-	int			barrier;
 }				t_keys;
 
 typedef struct s_ray
@@ -118,8 +117,8 @@ typedef struct s_game
 	int			map_fd;
 	int			height_map;
 	int			barrier_o_c;
-	int barrier_nb;         // entre 0 et 3
-	int barrier_framecount; // compteur pour gérer le "delay"
+	int			barrier_nb;
+	int			barrier_framecount;
 	float		degree;
 	float		angle;
 	char		**map_file;
@@ -210,8 +209,9 @@ int				render_game(t_game *game);
 void			put_img(t_game *game, float angle_step, float angle_start);
 
 // ---------------- barrier_bonus.c-----------------------
-// void			draw_barrier_state(t_game *game, int screen_x, int screen_y);
 void			toggle_barrier(t_game *game);
+void			put_img_door(t_game *game, float angle_step, float angle_start);
+
 // ---------------- main_bonus.c -------------------------
 
 #endif

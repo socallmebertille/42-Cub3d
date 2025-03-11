@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
+/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:52:35 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/11 14:38:25 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:55:40 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ static int	ft_keypress(int keypress, t_game *game)
 	else if (keypress == XK_Right)
 		game->keys.view_east = 1;
 	else if (keypress == XK_e)
-	{
-		game->keys.barrier = 1;
-	}
+		toggle_barrier(game);
 	return (0);
 }
 
@@ -51,8 +49,6 @@ static int	ft_keyrelease(int keypress, t_game *game)
 		game->keys.view_west = 0;
 	else if (keypress == XK_Right)
 		game->keys.view_east = 0;
-	else if (keypress == XK_e)
-		game->keys.barrier = 0;
 	return (0);
 }
 
