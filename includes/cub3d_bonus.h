@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/11 14:16:31 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:36:34 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ typedef struct s_pics
 	t_img		*left_1;
 	t_img		*right_0;
 	t_img		*right_1;
-	t_img		*left;
-	t_img		*right;
 	t_img		*bar_open;
 	t_img		*bar_close;
 	t_img		*bar_semiopen;
@@ -93,6 +91,7 @@ typedef struct s_keys
 	int			east;
 	int			view_west;
 	int			view_east;
+	int			barrier;
 }				t_keys;
 
 typedef struct s_ray
@@ -211,7 +210,7 @@ int				render_game(t_game *game);
 void			put_img(t_game *game, float angle_step, float angle_start);
 
 // ---------------- barrier_bonus.c-----------------------
-void			draw_barrier_state(t_game *game, int screen_x, int screen_y);
+// void			draw_barrier_state(t_game *game, int screen_x, int screen_y);
 void			toggle_barrier(t_game *game);
 // ---------------- main_bonus.c -------------------------
 

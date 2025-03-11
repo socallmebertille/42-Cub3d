@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:16:05 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/11 14:13:00 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:56:49 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ static void	free_pics_and_param(t_game *game)
 		free_one_img(game, game->pics->left_1);
 		free_one_img(game, game->pics->right_0);
 		free_one_img(game, game->pics->right_1);
+		free_one_img(game, game->pics->bar_close);
+		free_one_img(game, game->pics->bar_open);
+		free_one_img(game, game->pics->bar_opopen);
+		free_one_img(game, game->pics->bar_semiopen);
 		free(game->pics);
 		game->pics = NULL;
 	}

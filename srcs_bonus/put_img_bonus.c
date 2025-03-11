@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:59:04 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/11 14:18:53 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:53:11 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static t_img	*choice_pic(t_game *game, t_player *pic)
 	}
 	if (game->ray.side == 0)
 	{
-		if(game->ray.ray_dir.x > 0)
+		if (game->ray.ray_dir.x > 0)
 			return (game->pics->wall_w);
 		else
 			return (game->pics->wall_e);
@@ -106,7 +106,7 @@ static t_img	*choice_pic(t_game *game, t_player *pic)
 			return (game->pics->wall_n);
 		else
 			return (game->pics->wall_s);
-	}	
+	}
 }
 
 static void	choice_side_wall(t_game *game, t_player *pic)
@@ -142,6 +142,7 @@ static void	draw_column(t_game *game, int col, t_player *pic)
 	int	start;
 	int	end;
 	int	y;
+	int	color;
 
 	start = (game->win_height - game->ray.lineheight) / 2;
 	if (start < 0)
@@ -152,9 +153,9 @@ static void	draw_column(t_game *game, int col, t_player *pic)
 	y = 0;
 	while (y < start)
 		put_pixel_to_img(game, col, y++, game->param->c_colors.dec);
-	game->ray.text_step = (float)game->choice_pic->w_height / game->ray.lineheight;
-	game->ray.text_pos = (start - game->win_height / 2 + game->ray.lineheight / 2)
-		* game->ray.text_step;
+	game->ray.text_step = (float)game->choice_pic->h / game->ray.lineheight;
+	game->ray.text_pos = (start - game->win_height / 2 + game->ray.lineheight
+			/ 2) * game->ray.text_step;
 	// while (y <= end)
 	// {
 	// 	pic->y = (int)game->ray.text_pos;
@@ -165,11 +166,11 @@ static void	draw_column(t_game *game, int col, t_player *pic)
 	while (y <= end)
 	{
 		pic->y = (int)game->ray.text_pos;
-    	int color = get_pixel_color(game->choice_pic, pic->x, pic->y);
-    	if ((color & 0x00FFFFFF) != 0xFF00FF)
-        	put_pixel_to_img(game, col, y, color);
-    	y++;
-    	game->ray.text_pos += game->ray.text_step;
+		color = get_pixel_color(game->choice_pic, pic->x, pic->y);
+		if ((color & 0x00FFFFFF) != 0xFF00FF)
+			put_pixel_to_img(game, col, y, color);
+		y++;
+		game->ray.text_pos += game->ray.text_step;
 	}
 	while (y < game->win_height - 1)
 		put_pixel_to_img(game, col, y++, game->param->f_colors.dec);

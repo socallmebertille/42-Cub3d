@@ -27,6 +27,7 @@ OBJS			=	$(addprefix $(OBJ_DIR)/,$(OBJS_NAMES))
 SRCS_DIR_BONUS	=	srcs_bonus
 OBJ_DIR_BONUS	=	objs_bonus
 SRCS_N_BONUS	=	main_bonus.c \
+					barrier_bonus.c \
 					check_map_file_bonus.c \
 					map_file_parse_bonus.c \
 					get_texture_bonus.c \
@@ -42,13 +43,10 @@ SRCS_N_BONUS	=	main_bonus.c \
 					moves_bonus.c \
 					get_radius_bonus.c \
 					render_mini_map_bonus.c \
-					render_handlebars_bonus.c \
 					update_handlebars_bonus.c \
 					mouse_bonus.c \
-					put_img_bonus.c
-					render_handlebars.c \
-					put_img_bonus.c \
-					barrier_bonus.c 
+					render_handlebars_bonus.c \
+					put_img_bonus.c 
 OBJS_N_BONUS	=	$(SRCS_N_BONUS:.c=.o)
 SRCS_BONUS		=	$(addprefix $(SRCS_DIR_BONUS)/,$(SRCS_N_BONUS))
 OBJS_BONUS		=	$(addprefix $(OBJ_DIR_BONUS)/,$(OBJS_N_BONUS))

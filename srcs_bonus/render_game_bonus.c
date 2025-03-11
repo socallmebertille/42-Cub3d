@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:40:43 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/11 14:18:11 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:37:41 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	render_game(t_game *game)
 		move_view_west(game);
 	else if (game->keys.view_east)
 		move_view_east(game);
+	if (game->keys.barrier)
+		toggle_barrier(game);
 	put_img(game, (M_PI / 3) / game->win_width,
 		(float)game->angle - (M_PI / 6));
 	render_mini_map(game);
