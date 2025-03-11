@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:16:05 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/10 12:22:40 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:13:00 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	free_all(t_game *game)
 
 void	quite_game(t_game *game)
 {
+	// mlx_mouse_show(game->mlx, game->win);
 	free_all(game);
 	exit(0);
 }

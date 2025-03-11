@@ -6,13 +6,13 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:40:43 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/11 11:32:09 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/11 13:39:58 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-static void	move_view_west(t_game *game)
+void	move_view_west(t_game *game)
 {
 	game->degree -= 1;
 	if (game->degree == -1)
@@ -23,7 +23,7 @@ static void	move_view_west(t_game *game)
 	game->pics->left = 1;
 }
 
-static void	move_view_east(t_game *game)
+void	move_view_east(t_game *game)
 {
 	game->degree += 1;
 	if (game->degree == -1)

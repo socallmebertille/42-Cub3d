@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 18:31:33 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/08 18:34:11 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:04:18 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,7 @@ void	mlx_initialize(t_game *game)
 	game->img.addr = mlx_get_data_addr(game->img.img, &game->img.bpp,
 			&game->img.line_len, &game->img.endian);
 	init_pic(game);
+	mlx_mouse_move(game->mlx, game->win, game->win_width / 2, game->win_height / 2);
+	game->mouse.x = game->win_width / 2;
+	game->mouse.y = game->win_height / 2;
 }
