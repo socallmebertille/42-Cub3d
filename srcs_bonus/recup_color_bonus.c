@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   recup_color_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bertille <bertille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 17:34:54 by bertille          #+#    #+#             */
-/*   Updated: 2025/03/05 17:09:40 by bertille         ###   ########.fr       */
+/*   Updated: 2025/03/10 18:31:53 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	check_colors(t_game *game, t_param *param)
 	int	i;
 
 	i = 0;
+	while (param->ceiling_color[i] == ' ')
+		i++;
 	while (param->ceiling_color[i])
 	{
 		if (!ft_isdigit(param->ceiling_color[i])
@@ -26,6 +28,8 @@ static int	check_colors(t_game *game, t_param *param)
 		i++;
 	}
 	i = 0;
+	while (param->floor_color[i] == ' ')
+		i++;
 	while (param->floor_color[i])
 	{
 		if (!ft_isdigit(param->floor_color[i])

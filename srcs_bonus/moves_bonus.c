@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   moves_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 19:43:48 by bertille          #+#    #+#             */
-/*   Updated: 2025/03/10 15:46:18 by memotyle         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/03/11 14:17:55 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "cub3d_bonus.h"
 
@@ -71,6 +72,7 @@ void	move_west(t_game *game)
 		game->player.x = new_x;
 	if (!is_wall_collision(game, game->player.x, new_y))
 		game->player.y = new_y;
+	game->pics->left = 1;
 }
 
 void	move_east(t_game *game)
@@ -84,4 +86,5 @@ void	move_east(t_game *game)
 		game->player.x = new_x;
 	if (!is_wall_collision(game, game->player.x, new_y))
 		game->player.y = new_y;
+	game->pics->left = 2;
 }

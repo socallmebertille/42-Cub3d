@@ -6,103 +6,58 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:16:05 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/07 15:34:11 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:13:00 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-static void	free_param2(t_param *param)
+static void	free_one_param(char *param)
 {
-	if (param->floor_color)
+	if (param)
 	{
-		free(param->floor_color);
-		param->floor_color = NULL;
-	}
-	if (param->ceiling_color)
-	{
-		free(param->ceiling_color);
-		param->ceiling_color = NULL;
-	}
-	free(param);
-	param = NULL;
-}
-
-static void	free_param(t_param *param)
-{
-	if (param->no)
-	{
-		free(param->no);
-		param->no = NULL;
-	}
-	if (param->so)
-	{
-		free(param->so);
-		param->so = NULL;
-	}
-	if (param->we)
-	{
-		free(param->we);
-		param->we = NULL;
-	}
-	if (param->ea)
-	{
-		free(param->ea);
-		param->ea = NULL;
-	}
-	free_param2(param);
-}
-
-static void	free_handlebars(t_game *game)
-{
-	if (game->pics->straight)
-	{
-		mlx_destroy_image(game->mlx, game->pics->straight->img);
-		free(game->pics->straight);
-		game->pics->straight = NULL;
-	}
-	if (game->pics->left)
-	{
-		mlx_destroy_image(game->mlx, game->pics->left->img);
-		free(game->pics->left);
-		game->pics->left = NULL;
-	}
-	if (game->pics->right)
-	{
-		mlx_destroy_image(game->mlx, game->pics->right->img);
-		free(game->pics->right);
-		game->pics->right = NULL;
+		free(param);
+		param = NULL;
 	}
 }
 
-static void	free_pics(t_game *game)
+static void	free_one_img(t_game *game, t_img *img)
 {
-	if (game->pics->wall_n)
+	if (img)
 	{
-		mlx_destroy_image(game->mlx, game->pics->wall_n->img);
-		free(game->pics->wall_n);
-		game->pics->wall_n = NULL;
+		mlx_destroy_image(game->mlx, img->img);
+		free(img);
+		img = NULL;
 	}
-	if (game->pics->wall_s)
+}
+
+static void	free_pics_and_param(t_game *game)
+{
+	if (game->pics)
 	{
-		mlx_destroy_image(game->mlx, game->pics->wall_s->img);
-		free(game->pics->wall_s);
-		game->pics->wall_s = NULL;
+		free_one_img(game, game->pics->wall_n);
+		free_one_img(game, game->pics->wall_s);
+		free_one_img(game, game->pics->wall_w);
+		free_one_img(game, game->pics->wall_e);
+		free_one_img(game, game->pics->straight);
+		free_one_img(game, game->pics->left_0);
+		free_one_img(game, game->pics->left_1);
+		free_one_img(game, game->pics->right_0);
+		free_one_img(game, game->pics->right_1);
+		free(game->pics);
+		game->pics = NULL;
 	}
-	if (game->pics->wall_w)
+	if (game->param)
 	{
-		mlx_destroy_image(game->mlx, game->pics->wall_w->img);
-		free(game->pics->wall_w);
-		game->pics->wall_w = NULL;
+		free_one_param(game->param->no);
+		free_one_param(game->param->so);
+		free_one_param(game->param->we);
+		free_one_param(game->param->ea);
+		free_one_param(game->param->floor_color);
+		free_one_param(game->param->ceiling_color);
+		free(game->param);
+		game->param = NULL;
 	}
-	if (game->pics->wall_e)
-	{
-		mlx_destroy_image(game->mlx, game->pics->wall_e->img);
-		free(game->pics->wall_e);
-		game->pics->wall_e = NULL;
-	}
-	free_handlebars(game);
-	free(game->pics);
 }
 
 void	free_all(t_game *game)
@@ -113,13 +68,7 @@ void	free_all(t_game *game)
 		ft_free_tab(game->map);
 	if (game->check_map)
 		ft_free_tab(game->check_map);
-	if (game->pics)
-	{
-		free_pics(game);
-		game->pics = NULL;
-	}
-	if (game->param)
-		free_param(game->param);
+	free_pics_and_param(game);
 	if (game->img.img)
 		mlx_destroy_image(game->mlx, game->img.img);
 	if (game->win)
@@ -131,6 +80,7 @@ void	free_all(t_game *game)
 
 void	quite_game(t_game *game)
 {
+	// mlx_mouse_show(game->mlx, game->win);
 	free_all(game);
 	exit(0);
 }

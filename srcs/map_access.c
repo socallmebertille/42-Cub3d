@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:27:44 by saberton          #+#    #+#             */
-/*   Updated: 2025/01/30 15:55:07 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/10 18:36:20 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int	flood_fill_check(t_game *game)
 		j = 0;
 		while (game->check_map[i][j])
 		{
-			if (game->check_map[i][j] == 'S'
-				&& !surrounded_by_walls(game, i, j))
+			if (game->check_map[i][j] == '0' || (game->check_map[i][j] == 'S'
+				&& !surrounded_by_walls(game, i, j)))
 				return (write_err(RED MISS_WALL RESET), 1);
 			j++;
 		}

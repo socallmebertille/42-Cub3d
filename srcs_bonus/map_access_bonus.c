@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_access_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bertille <bertille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:27:44 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/05 17:09:17 by bertille         ###   ########.fr       */
+/*   Updated: 2025/03/11 11:25:32 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static void	flood_fill(char **map, t_player cur, t_game *game)
 
 static int	surrounded_by_walls(t_game *game, int y, int x)
 {
-	if ((y == 0 || y == game->height_map - 1)
-		&& (game->check_map[y][x] != '1' || game->check_map[y][x] != ' '))
+	if ((y == 0 || y == game->height_map - 1) && (game->check_map[y][x] != '1'
+		|| game->check_map[y][x] != ' '))
 		return (0);
 	if ((x == 0 || x == (int)ft_strlen(game->check_map[y]) - 1)
 		&& (game->check_map[y][x] != '1' || game->check_map[y][x] != ' '))
@@ -61,8 +61,8 @@ int	flood_fill_check(t_game *game)
 		j = 0;
 		while (game->check_map[i][j])
 		{
-			if (game->check_map[i][j] == 'S'
-				&& !surrounded_by_walls(game, i, j))
+			if ((game->check_map[i][j] == 'S'
+					&& !surrounded_by_walls(game, i, j))) //game->check_map[i][j] == '0' || 
 				return (write_err(RED MISS_WALL RESET), 1);
 			j++;
 		}

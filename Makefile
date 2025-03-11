@@ -35,12 +35,17 @@ SRCS_N_BONUS	=	main_bonus.c \
 					map_parse_bonus.c \
 					map_access_bonus.c \
 					create_rgb_bonus.c \
+					init_game_bonus.c \
 					utils_bonus.c \
 					free_bonus.c \
 					render_game_bonus.c \
 					moves_bonus.c \
 					get_radius_bonus.c \
 					render_mini_map_bonus.c \
+					render_handlebars_bonus.c \
+					update_handlebars_bonus.c \
+					mouse_bonus.c \
+					put_img_bonus.c
 					render_handlebars.c \
 					put_img_bonus.c \
 					barrier_bonus.c 

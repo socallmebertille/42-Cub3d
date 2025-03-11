@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parse_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:23:14 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/07 11:55:08 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:23:39 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static void	malloc_map(char **file, t_game *game)
 	len = 0;
 	while (file[i + len])
 	{
-		if (len > MAX_MAP_HEIGHT || (int)ft_strlen(file[i + len]) > MAX_MAP_WIDTH)
+		if ((int)ft_strlen(file[i + len]) > MAX_MAP_WIDTH
+			|| len > MAX_MAP_HEIGHT)
 			return (write_err(RED "Error\nMap too tall (max 100)\n" RESET));
 		if ((int)ft_strlen(file[i + len]) == ft_count_chars(file[i + len],
 				"\n\0\t\r\f\v "))
@@ -105,7 +106,7 @@ int	check_char(char **map, t_game *game)
 		recup_player(map[i], game, i);
 		if (!ft_find_others(map[i], "01 NSEWD"))
 			return (write_err(RED WRONG_CHAR RESET), 1);
-		count += ft_count_chars(map[i], "NSEW");//D?
+		count += ft_count_chars(map[i], "NSEW"); // D?
 	}
 	if (count < 1)
 		return (write_err(RED "Error\nA player is missing in map\n" RESET), 1);

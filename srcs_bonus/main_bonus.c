@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:52:35 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/10 18:27:08 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:17:28 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,8 +140,9 @@ int	main(int argc, char **argv)
 	map_file_parse(&game);
 	mlx_initialize(&game);
 	mlx_loop_hook(game.mlx, &render_game, &game);
-	mlx_hook(game.win, 2, 1L << 0, &ft_keypress, &game);
-	mlx_hook(game.win, 3, 1L << 1, &ft_keyrelease, &game);
+	mlx_hook(game.win, KeyPress, KeyPressMask, &ft_keypress, &game);
+	mlx_hook(game.win, KeyRelease, KeyReleaseMask, &ft_keyrelease, &game);
+	mlx_hook(game.win, MotionNotify, PointerMotionMask, &mouse_move, &game);
 	mlx_hook(game.win, 33, 0, (void *)quite_game, &game);
 	mlx_loop(game.mlx);
 	free_all(&game);

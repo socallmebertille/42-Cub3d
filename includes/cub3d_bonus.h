@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/10 18:09:54 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:16:31 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <float.h>
 # include <math.h>
 # include <unistd.h>
+# include <sys/time.h>
+# include <stdint.h>
 
 typedef struct s_colors
 {
@@ -36,8 +38,8 @@ typedef struct s_img
 	void		*img;
 	int			bpp;
 	int			line_len;
-	int			w_height;
-	int			w_width;
+	int			h;
+	int			w;
 	int			endian;
 	char		*addr;
 }				t_img;
@@ -56,11 +58,19 @@ typedef struct s_param
 
 typedef struct s_pics
 {
+	int			left;
+	int			step;
+	long long	start_sprite;
+	long long	end_sprite;
 	t_img		*wall_n;
 	t_img		*wall_s;
 	t_img		*wall_w;
 	t_img		*wall_e;
 	t_img		*straight;
+	t_img		*left_0;
+	t_img		*left_1;
+	t_img		*right_0;
+	t_img		*right_1;
 	t_img		*left;
 	t_img		*right;
 	t_img		*bar_open;
@@ -117,12 +127,14 @@ typedef struct s_game
 	char		**map;
 	char		**check_map;
 	t_player	player;
+	t_player	mouse;
 	t_keys		keys;
 	t_ray		ray;
 	t_param		*param;
 	t_pics		*pics;
 	t_img		img;
 	t_img		*choice_pic;
+	t_img		*player_sprite;
 }				t_game;
 
 // ---------------- check_map_file_bonus.c -------------------------
@@ -160,8 +172,12 @@ int				flood_fill_check(t_game *game);
 void			write_err(char *str);
 void			put_pixel_to_img(t_game *game, int x, int y, int color);
 int				get_pixel_color(t_img *texture, int x, int y);
+long long		timestamp(void);
 char			*ft_strncpy(char *dest, const char *src, size_t n);
 char			*substring_until_char(const char *str, char delimiter);
+
+// ---------------- init_game_bonus.c -------------------------
+void			mlx_initialize(t_game *game);
 
 // ---------------- moves_bonus.c-----------------------
 void			move_north(t_game *game);
@@ -177,10 +193,18 @@ void			draw_radius(t_game *game, t_player play);
 void			draw_line(t_game *game, t_player play, t_player *hit);
 void			render_mini_map(t_game *game);
 
-// ---------------- render_handlebars.c-----------------------
+// ---------------- update_handlebars_bonus.c-----------------------
+void			update_animation(t_game *game);
+
+// ---------------- render_handlebars_bonus.c-----------------------
 void			render_handlebars(t_game *game);
 
+// ---------------- mouse_bonus.c-----------------------
+int				mouse_move(int x, int y, t_game *game);
+
 // ---------------- render_game_bonus.c-----------------------
+void			move_view_west(t_game *game);
+void			move_view_east(t_game *game);
 int				render_game(t_game *game);
 
 // ---------------- put_img_bonus.c-----------------------
