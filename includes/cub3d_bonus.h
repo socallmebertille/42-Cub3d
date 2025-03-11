@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/10 17:54:47 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/11 11:31:58 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <math.h>
 # include <unistd.h>
 # include <sys/time.h>
+# include <stdint.h>
 
 typedef struct s_colors
 {
@@ -188,8 +189,12 @@ void			update_animation(t_game *game);
 // ---------------- render_handlebars_bonus.c-----------------------
 void			render_handlebars(t_game *game);
 
+// ---------------- mouse_bonus.c-----------------------
+int				get_mouse_position(t_game *game, int *x, int *y);
+
 // ---------------- render_game_bonus.c-----------------------
 int				render_game(t_game *game);
+int				mouse_move(t_game *game);
 
 // ---------------- put_img_bonus.c-----------------------
 void			put_img(t_game *game, float angle_step, float angle_start);
