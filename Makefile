@@ -45,6 +45,7 @@ SRCS_N_BONUS	=	main_bonus.c \
 					render_mini_map_bonus.c \
 					update_handlebars_bonus.c \
 					mouse_bonus.c \
+					render_barrier_bonus.c \
 					render_handlebars_bonus.c \
 					put_img_bonus.c 
 OBJS_N_BONUS	=	$(SRCS_N_BONUS:.c=.o)

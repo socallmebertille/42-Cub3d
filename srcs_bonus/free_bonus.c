@@ -6,7 +6,7 @@
 /*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:16:05 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/12 12:38:37 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:32:13 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,6 @@ void	free_all(t_game *game)
 	}
 	if (game->barrier_nb)
 	{
-		// while (game->barrier_nb)
-		// {
-		// 	free(game->door[game->barrier_nb - 1]);
-		// 	game->door[game->barrier_nb - 1] = NULL;
-		// 	game->barrier_nb--;
-		// }
 		free(game->door);
 		game->door = NULL;
 	}

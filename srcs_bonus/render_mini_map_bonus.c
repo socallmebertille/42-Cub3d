@@ -6,7 +6,7 @@
 /*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 14:15:22 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/12 12:40:32 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:50:08 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,19 @@ static void	draw_door(t_game *game, int start_x, int start_y)
 	int	color;
 
 	id = wich_door(game, start_x, start_y);
-	if (game->door[id].barrier_o_c == 0)
+	if (id != -1 && game->door[id].barrier_o_c == 0)
 		color = 0xff0000;
-	else
+	else if (id != -1 && game->door[id].barrier_o_c > 0)
 		color = 0x7fff00;
+	else
+		return ;
 	i = 0;
 	while (i < PX)
 	{
 		j = 0;
 		while (j < PX)
 		{
-			put_pixel_to_img(game, start_x + j, start_y + i, color);
+			put_pixel_to_img(game, start_x * PX + j, start_y * PX + i, color);
 			j++;
 		}
 		i++;
@@ -113,7 +115,7 @@ void	render_mini_map(t_game *game)
 			else if (game->map[y][x] == '1')
 				draw_square(game, 0xfffacd, x * PX, y * PX);
 			else if (game->map[y][x] == 'D')
-				draw_door(game, x * PX, y * PX);
+				draw_door(game, x, y);
 			x++;
 		}
 		y++;

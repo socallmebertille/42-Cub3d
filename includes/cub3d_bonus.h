@@ -6,7 +6,7 @@
 /*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/12 12:38:11 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:39:52 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ typedef struct s_door
 {
 	int			id;
 	int			barrier_o_c;
-	// int			barrier_nb;
 	int			barrier_framecount;
 	t_player	pos;
 }				t_door;
@@ -123,9 +122,8 @@ typedef struct s_game
 	int			win_height;
 	int			map_fd;
 	int			height_map;
-	// int			barrier_o_c;
 	int			barrier_nb;
-	// int			barrier_framecount;
+	int			barrier_open;
 	float		degree;
 	float		angle;
 	char		**map_file;
@@ -140,6 +138,7 @@ typedef struct s_game
 	t_img		img;
 	t_img		*choice_pic;
 	t_img		*player_sprite;
+	t_ray		ray_door;
 	t_door		*door;
 }				t_game;
 
@@ -209,18 +208,21 @@ void			render_handlebars(t_game *game);
 int				mouse_move(int x, int y, t_game *game);
 int				mouse_press(int button, int x, int y, t_game *game);
 
+// ---------------- barrier_bonus.c-----------------------
+void			toggle_barrier(t_game *game, int x, int y);
+
+// ---------------- render_handlebars_bonus.c-----------------------
+void			put_img_door(t_game *game, float angle_step, float angle_start);
+int				wich_door(t_game *game, int x, int y);
+
 // ---------------- render_game_bonus.c-----------------------
 void			move_view_west(t_game *game);
 void			move_view_east(t_game *game);
 int				render_game(t_game *game);
 
 // ---------------- put_img_bonus.c-----------------------
+void			init_ray(t_game *game);
 void			put_img(t_game *game, float angle_step, float angle_start);
-
-// ---------------- barrier_bonus.c-----------------------
-int				wich_door(t_game *game, int x, int y);
-void			toggle_barrier(t_game *game, int x, int y);
-void			put_img_door(t_game *game, float angle_step, float angle_start);
 
 // ---------------- main_bonus.c -------------------------
 

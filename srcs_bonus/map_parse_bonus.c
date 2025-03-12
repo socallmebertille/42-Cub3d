@@ -6,7 +6,7 @@
 /*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:23:14 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/12 12:43:28 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:30:03 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,6 @@ static void	recup_door(char **map, t_game *game)
 	int	j;
 	int	count;
 
-	i = 0;
-	while (map[i])
-		game->barrier_nb += ft_count_chars(map[i++], "D");
-	if (!game->barrier_nb)
-		return ;
-	game->door = malloc(sizeof(t_door) * (game->barrier_nb));
 	if (!game->door)
 		return (write_err(RED MALLOC RESET));
 	ft_bzero(game->door, sizeof(t_door) * game->barrier_nb);
@@ -118,8 +112,8 @@ static void	recup_door(char **map, t_game *game)
 		{
 			if (map[i][j] == 'D')
 			{
-				game->door[count].pos.x = i;
-				game->door[count].pos.y = j;
+				game->door[count].pos.y = i;
+				game->door[count].pos.x = j;
 				game->door[count].id = count;
 				count++;
 			}
@@ -147,6 +141,13 @@ int	check_char(char **map, t_game *game)
 		return (write_err(RED "Error\nA player is missing in map\n" RESET), 1);
 	if (count > 1)
 		return (write_err(RED "Error\nToo many players in map\n" RESET), 1);
-	recup_door(map, game);
+	i = 0;
+	while (map[i])
+		game->barrier_nb += ft_count_chars(map[i++], "D");
+	if (game->barrier_nb)
+	{
+		game->door = malloc(sizeof(t_door) * (game->barrier_nb));
+		recup_door(map, game);
+	}
 	return (0);
 }

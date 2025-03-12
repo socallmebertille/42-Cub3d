@@ -6,7 +6,7 @@
 /*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:00:43 by memotyle          #+#    #+#             */
-/*   Updated: 2025/03/12 12:40:48 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:31:02 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	is_wall_collision(t_game *game, float x, float y)
 		return (1);
 	if (y - map_y < -0.5 && game->map[map_y - 1][map_x] == '1')
 		return (1);
-	if (game->map[map_y][map_x] == 'D')// && game->barrier_o_c == 0)
+	if (game->map[map_y][map_x] == 'D')
 	{
 		id = wich_door(game, map_x, map_y);
 		if (game->door[id].barrier_o_c == 0)

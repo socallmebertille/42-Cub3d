@@ -6,7 +6,7 @@
 /*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 18:31:33 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/12 12:31:42 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:31:55 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ static void	init_pic(t_game *game)
 	game->pics->bar_open = init_door(game, game->pics->bar_open, 6);
 	game->pics->bar_semiopen = init_door(game, game->pics->bar_semiopen, 7);
 	game->pics->bar_opopen = init_door(game, game->pics->bar_opopen, 8);
-	// game->barrier_o_c = 0;
 }
 
 void	mlx_initialize(t_game *game)
