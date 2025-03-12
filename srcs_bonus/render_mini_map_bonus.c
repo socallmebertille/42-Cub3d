@@ -6,7 +6,7 @@
 /*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 14:15:22 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/11 15:54:59 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/12 12:40:32 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ static void	draw_door(t_game *game, int start_x, int start_y)
 {
 	int	i;
 	int	j;
+	int	id;
 	int	color;
 
-	if (game->barrier_o_c == 0)
+	id = wich_door(game, start_x, start_y);
+	if (game->door[id].barrier_o_c == 0)
 		color = 0xff0000;
 	else
 		color = 0x7fff00;

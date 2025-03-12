@@ -6,7 +6,7 @@
 /*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:52:35 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/11 15:55:40 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/12 11:55:13 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ static int	ft_keypress(int keypress, t_game *game)
 		game->keys.view_west = 1;
 	else if (keypress == XK_Right)
 		game->keys.view_east = 1;
-	else if (keypress == XK_e)
-		toggle_barrier(game);
 	return (0);
 }
 
@@ -67,6 +65,7 @@ int	main(int argc, char **argv)
 	mlx_hook(game.win, KeyPress, KeyPressMask, &ft_keypress, &game);
 	mlx_hook(game.win, KeyRelease, KeyReleaseMask, &ft_keyrelease, &game);
 	mlx_hook(game.win, MotionNotify, PointerMotionMask, &mouse_move, &game);
+	mlx_hook(game.win, ButtonPress, ButtonPressMask, &mouse_press, &game);
 	mlx_hook(game.win, 33, 0, (void *)quite_game, &game);
 	mlx_loop(game.mlx);
 	free_all(&game);

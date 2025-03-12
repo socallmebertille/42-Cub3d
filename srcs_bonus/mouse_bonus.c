@@ -6,7 +6,7 @@
 /*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 11:19:48 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/11 16:00:17 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/12 12:28:41 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,12 @@ int	mouse_move(int x, int y, t_game *game)
 		game->mouse.y = game->win_height / 2;
 	}
 	return (0);
+}
+int mouse_press(int button, int x, int y, t_game *game)
+{
+    (void)x;
+    (void)y;
+    if (button == 1) // 1 = clic gauche
+        toggle_barrier(game, x, y);
+    return (0);
 }

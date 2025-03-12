@@ -6,22 +6,39 @@
 /*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:57:42 by memotyle          #+#    #+#             */
-/*   Updated: 2025/03/11 15:54:42 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/12 12:40:13 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-void	toggle_barrier(t_game *game)
+int	wich_door(t_game *game, int x, int y)
 {
-	if (game->barrier_o_c == 0)
-		game->barrier_o_c = 1;
-	else if (game->barrier_o_c == 1)
-		game->barrier_o_c = 2;
-	else if (game->barrier_o_c == 2)
-		game->barrier_o_c = 3;
+	int	count;
+
+	count = 0;
+	while (count < game->barrier_nb)
+	{
+		if (x == game->door[count].pos.x && y == game->door[count].pos.y)
+			return (game->door[count].id);
+		count++;
+	}
+	return (-1);
+}
+
+void	toggle_barrier(t_game *game, int x, int y)
+{
+	int	id;
+
+	id = wich_door(game, x, y);
+	if (game->door[id].barrier_o_c == 0)
+		game->door[id].barrier_o_c = 1;
+	else if (game->door[id].barrier_o_c == 1)
+		game->door[id].barrier_o_c = 2;
+	else if (game->door[id].barrier_o_c == 2)
+		game->door[id].barrier_o_c = 3;
 	else
-		game->barrier_o_c = 0;
+		game->door[id].barrier_o_c = 0;
 }
 
 static void	init_ray(t_game *game)
@@ -55,6 +72,7 @@ static void	init_ray(t_game *game)
 static t_img	*choice_pic(t_game *game, t_player *pic)
 {
 	char	c;
+	int		id;
 
 	c = game->map[(int)game->ray.map.y][(int)game->ray.map.x];
 	if (game->ray.side == 0)
@@ -71,11 +89,12 @@ static t_img	*choice_pic(t_game *game, t_player *pic)
 	}
 	if (c == 'D')
 	{
-		if (game->barrier_o_c == 0)
+		id = wich_door(game, (int)game->ray.map.x, (int)game->ray.map.y);
+		if (game->door[id].barrier_o_c == 0)
 			return (game->pics->bar_close);
-		else if (game->barrier_o_c == 1)
+		else if (game->door[id].barrier_o_c == 1)
 			return (game->pics->bar_semiopen);
-		else if (game->barrier_o_c == 2)
+		else if (game->door[id].barrier_o_c == 2)
 			return (game->pics->bar_opopen);
 		else
 			return (game->pics->bar_open);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parse_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
+/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:23:14 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/10 12:23:39 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/12 12:43:28 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,41 @@ static void	recup_player(char *map, t_game *game, int y)
 	}
 }
 
+static void	recup_door(char **map, t_game *game)
+{
+	int	i;
+	int	j;
+	int	count;
+
+	i = 0;
+	while (map[i])
+		game->barrier_nb += ft_count_chars(map[i++], "D");
+	if (!game->barrier_nb)
+		return ;
+	game->door = malloc(sizeof(t_door) * (game->barrier_nb));
+	if (!game->door)
+		return (write_err(RED MALLOC RESET));
+	ft_bzero(game->door, sizeof(t_door) * game->barrier_nb);
+	count = 0;
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'D')
+			{
+				game->door[count].pos.x = i;
+				game->door[count].pos.y = j;
+				game->door[count].id = count;
+				count++;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 int	check_char(char **map, t_game *game)
 {
 	int	i;
@@ -106,11 +141,12 @@ int	check_char(char **map, t_game *game)
 		recup_player(map[i], game, i);
 		if (!ft_find_others(map[i], "01 NSEWD"))
 			return (write_err(RED WRONG_CHAR RESET), 1);
-		count += ft_count_chars(map[i], "NSEW"); // D?
+		count += ft_count_chars(map[i], "NSEW");
 	}
 	if (count < 1)
 		return (write_err(RED "Error\nA player is missing in map\n" RESET), 1);
 	if (count > 1)
 		return (write_err(RED "Error\nToo many players in map\n" RESET), 1);
+	recup_door(map, game);
 	return (0);
 }

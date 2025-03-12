@@ -6,7 +6,7 @@
 /*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/11 15:56:22 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/12 12:38:11 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,14 @@ typedef struct s_ray
 	t_player	step;
 	t_player	side_dist;
 }				t_ray;
-
+typedef struct s_door
+{
+	int			id;
+	int			barrier_o_c;
+	// int			barrier_nb;
+	int			barrier_framecount;
+	t_player	pos;
+}				t_door;
 typedef struct s_game
 {
 	void		*mlx;
@@ -116,9 +123,9 @@ typedef struct s_game
 	int			win_height;
 	int			map_fd;
 	int			height_map;
-	int			barrier_o_c;
+	// int			barrier_o_c;
 	int			barrier_nb;
-	int			barrier_framecount;
+	// int			barrier_framecount;
 	float		degree;
 	float		angle;
 	char		**map_file;
@@ -133,6 +140,7 @@ typedef struct s_game
 	t_img		img;
 	t_img		*choice_pic;
 	t_img		*player_sprite;
+	t_door		*door;
 }				t_game;
 
 // ---------------- check_map_file_bonus.c -------------------------
@@ -199,6 +207,7 @@ void			render_handlebars(t_game *game);
 
 // ---------------- mouse_bonus.c-----------------------
 int				mouse_move(int x, int y, t_game *game);
+int				mouse_press(int button, int x, int y, t_game *game);
 
 // ---------------- render_game_bonus.c-----------------------
 void			move_view_west(t_game *game);
@@ -209,7 +218,8 @@ int				render_game(t_game *game);
 void			put_img(t_game *game, float angle_step, float angle_start);
 
 // ---------------- barrier_bonus.c-----------------------
-void			toggle_barrier(t_game *game);
+int				wich_door(t_game *game, int x, int y);
+void			toggle_barrier(t_game *game, int x, int y);
 void			put_img_door(t_game *game, float angle_step, float angle_start);
 
 // ---------------- main_bonus.c -------------------------
