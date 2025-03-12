@@ -6,7 +6,7 @@
 /*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:52:35 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/12 11:55:13 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:00:53 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ static int	ft_keyrelease(int keypress, t_game *game)
 	else if (keypress == XK_Right)
 		game->keys.view_east = 0;
 	return (0);
+}
+
+void	quite_game(t_game *game)
+{
+	free_all(game);
+	exit(0);
 }
 
 int	main(int argc, char **argv)

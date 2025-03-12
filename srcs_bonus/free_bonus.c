@@ -6,7 +6,7 @@
 /*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:16:05 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/12 17:32:13 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:00:43 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,8 @@ static void	free_pics_and_param(t_game *game)
 	}
 }
 
-void	free_all(t_game *game)
+static void	free_elem(t_game *game)
 {
-	if (game->map_file)
-		ft_free_tab(game->map_file);
-	if (game->map)
-		ft_free_tab(game->map);
-	if (game->check_map)
-		ft_free_tab(game->check_map);
-	free_pics_and_param(game);
 	if (game->param)
 	{
 		free(game->param);
@@ -84,6 +77,18 @@ void	free_all(t_game *game)
 		free(game->door);
 		game->door = NULL;
 	}
+}
+
+void	free_all(t_game *game)
+{
+	if (game->map_file)
+		ft_free_tab(game->map_file);
+	if (game->map)
+		ft_free_tab(game->map);
+	if (game->check_map)
+		ft_free_tab(game->check_map);
+	free_pics_and_param(game);
+	free_elem(game);
 	if (game->img.img)
 		mlx_destroy_image(game->mlx, game->img.img);
 	if (game->win)
@@ -91,10 +96,4 @@ void	free_all(t_game *game)
 	if (game->mlx)
 		mlx_destroy_display(game->mlx);
 	free(game->mlx);
-}
-
-void	quite_game(t_game *game)
-{
-	free_all(game);
-	exit(0);
 }

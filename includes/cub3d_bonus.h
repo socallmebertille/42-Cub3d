@@ -6,7 +6,7 @@
 /*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/12 17:39:52 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:01:23 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,6 @@ int				check_map_file(char *map_file, t_game *game);
 
 // ---------------- free_bonus.c -------------------------
 void			free_all(t_game *game);
-void			quite_game(t_game *game);
 
 // ---------------- get_texture_bonus.c -------------------------
 int				map_texture2(t_game *game, t_param *param);
@@ -225,5 +224,6 @@ void			init_ray(t_game *game);
 void			put_img(t_game *game, float angle_step, float angle_start);
 
 // ---------------- main_bonus.c -------------------------
+void			quite_game(t_game *game);
 
 #endif
