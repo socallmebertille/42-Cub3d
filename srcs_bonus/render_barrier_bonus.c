@@ -6,7 +6,7 @@
 /*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 17:35:19 by memotyle          #+#    #+#             */
-/*   Updated: 2025/03/13 15:01:30 by melinaaam        ###   ########.fr       */
+/*   Updated: 2025/03/13 16:07:06 by melinaaam        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static t_img	*choice_pic(t_game *game, t_player *pic)
 	return (NULL);
 }
 
-static void	wall_or_door(t_game *game, t_player *pic)
+static char	wall_or_door(t_game *game, t_player *pic)
 {
 	char	c;
 	int		hit;
@@ -79,13 +79,7 @@ static void	wall_or_door(t_game *game, t_player *pic)
 		if (c == '1' || c == 'D')
 			hit = 1;
 	}
-	if (c == 'D')
-	{
-		game->choice_pic = choice_pic(game, pic);
-		game->ray.text_step = (float)game->choice_pic->h / game->ray.lineheight;
-	}
-	else
-		game->choice_pic = NULL;
+	return (c);
 }
 
 static void	draw_column(t_game *game, int col, t_player *pic)
@@ -142,9 +136,10 @@ void	put_img_door(t_game *game, float angle_step, float angle_start)
 		init_ray(game);
 		game->ray.lineheight = (int)(game->win_height
 				/ (game->ray.perpwalldist));
-		wall_or_door(game, &pic);
-		if (game->choice_pic)
+		if (wall_or_door(game, &pic) == 'D')
 		{
+			game->choice_pic = choice_pic(game, &pic);
+			game->ray.text_step = (float)game->choice_pic->h / game->ray.lineheight;
 			pic.x = (int)((pic.x - floor(pic.x)) * (double)game->choice_pic->w);
 			draw_column(game, col, &pic);
 		}

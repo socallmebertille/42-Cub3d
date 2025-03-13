@@ -6,7 +6,7 @@
 /*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:23:14 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/13 15:37:34 by melinaaam        ###   ########.fr       */
+/*   Updated: 2025/03/13 15:51:39 by melinaaam        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,35 +94,6 @@ static void	recup_player(char *map, t_game *game, int y)
 	}
 }
 
-static void	recup_door(char **map, t_game *game)
-{
-	int	i;
-	int	j;
-	int	count;
-
-	if (!game->door)
-		return (write_err(RED MALLOC RESET));
-	ft_bzero(game->door, sizeof(t_door) * game->barrier_nb);
-	count = 0;
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] == 'D')
-			{
-				game->door[count].pos.y = i;
-				game->door[count].pos.x = j;
-				game->door[count].id = count;
-				count++;
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
 int	check_char(char **map, t_game *game)
 {
 	int	i;
@@ -141,17 +112,7 @@ int	check_char(char **map, t_game *game)
 		return (write_err(RED "Error\nA player is missing in map\n" RESET), 1);
 	if (count > 1)
 		return (write_err(RED "Error\nToo many players in map\n" RESET), 1);
-	i = 0;
-	while (map[i])
-		game->barrier_nb += ft_count_chars(map[i++], "D");
-	if (game->barrier_nb)
-	{
-		game->door = malloc(sizeof(t_door) * (game->barrier_nb));
-		if (!game->door)
-			return (write_err(RED MALLOC RESET), 1);
-		recup_door(map, game);
-		if (door_surrounded(game))
-			return (1);
-	}
+	if (map_parse_door(game, map))
+		return (1);
 	return (0);
 }

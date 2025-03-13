@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_access_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:27:44 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/11 15:59:43 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/13 15:41:54 by melinaaam        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int	flood_fill_check(t_game *game)
 		j = 0;
 		while (game->check_map[i][j])
 		{
-			if ((game->check_map[i][j] == 'S' && !surrounded_by_walls(game, i,
-					j))) // game->check_map[i][j] == '0' ||
+			if ((game->check_map[i][j] == '0' || game->check_map[i][j] == 'S')
+				&& !surrounded_by_walls(game, i, j))
 				return (write_err(RED MISS_WALL RESET), 1);
 			j++;
 		}

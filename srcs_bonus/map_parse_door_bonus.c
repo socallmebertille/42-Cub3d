@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_elmts_parse_bonus.c                            :+:      :+:    :+:   */
+/*   map_parse_door_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 11:08:46 by melinaaam         #+#    #+#             */
-/*   Updated: 2025/03/13 11:50:09 by melinaaam        ###   ########.fr       */
+/*   Created: 2025/03/13 15:44:31 by melinaaam         #+#    #+#             */
+/*   Updated: 2025/03/13 15:50:44 by melinaaam        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d_bonus.h>
+#include "cub3d_bonus.h"
 
 int	check_one_door(t_game *game, int i, int j)
 {
@@ -48,6 +48,54 @@ int	door_surrounded(t_game *game)
 		if (!check_one_door(game, i, j))
 			return (write_err(RED DOOR RESET), 1);
 		d++;
+	}
+	return (0);
+}
+
+static void	recup_door(char **map, t_game *game)
+{
+	int	i;
+	int	j;
+	int	count;
+
+	if (!game->door)
+		return (write_err(RED MALLOC RESET));
+	ft_bzero(game->door, sizeof(t_door) * game->barrier_nb);
+	count = 0;
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'D')
+			{
+				game->door[count].pos.y = i;
+				game->door[count].pos.x = j;
+				game->door[count].id = count;
+				count++;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+int	map_parse_door(t_game *game, char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		game->barrier_nb += ft_count_chars(map[i++], "D");
+	if (game->barrier_nb)
+	{
+		game->door = malloc(sizeof(t_door) * (game->barrier_nb));
+		if (!game->door)
+			return (write_err(RED MALLOC RESET), 1);
+		recup_door(map, game);
+		if (door_surrounded(game))
+			return (1);
 	}
 	return (0);
 }

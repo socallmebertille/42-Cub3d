@@ -6,7 +6,7 @@
 /*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/13 14:33:57 by melinaaam        ###   ########.fr       */
+/*   Updated: 2025/03/13 15:59:51 by melinaaam        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,9 +170,10 @@ int				check_value(t_game *game, t_param *param);
 int				recup_map(char **file, t_game *game);
 int				check_char(char **map, t_game *game);
 
-// ---------------- map_parse_bonus.c -------------------------
+// ---------------- map_parse_door_bonus.c -------------------------
 int				door_surrounded(t_game *game);
 int				check_one_door(t_game *game, int i, int j);
+int				map_parse_door(t_game *game, char **map);
 
 // ---------------- map_access_bonus.c.c -------------------------
 int				flood_fill_check(t_game *game);
@@ -211,6 +212,9 @@ void			render_handlebars(t_game *game);
 // ---------------- mouse_bonus.c-----------------------
 int				mouse_move(int x, int y, t_game *game);
 int				mouse_press(int button, int x, int y, t_game *game);
+
+// ---------------- ray_to_door_bonus.c-----------------------
+char			get_ray_to_door(t_game *game, int x);
 
 // ---------------- barrier_bonus.c-----------------------
 void			toggle_barrier(t_game *game, int x, int y);

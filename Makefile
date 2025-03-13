@@ -39,6 +39,7 @@ SRCS_N_BONUS =	main_bonus.c \
 				recup_color_bonus.c \
 				check_color_bonus.c \
 				map_parse_bonus.c \
+				map_parse_door_bonus.c \
 				map_access_bonus.c \
 				create_rgb_bonus.c \
 				init_game_bonus.c \
@@ -50,10 +51,10 @@ SRCS_N_BONUS =	main_bonus.c \
 				render_mini_map_bonus.c \
 				update_handlebars_bonus.c \
 				mouse_bonus.c \
+				ray_to_door_bonus.c \
 				render_barrier_bonus.c \
 				render_handlebars_bonus.c \
-				put_img_bonus.c \
-				map_elmts_parse_bonus.c 
+				put_img_bonus.c
 
 OBJS_N_BONUS = $(SRCS_N_BONUS:.c=.o)
 SRCS_BONUS = $(addprefix $(SRCS_DIR_BONUS)/,$(SRCS_N_BONUS))
