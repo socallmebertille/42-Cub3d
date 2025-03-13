@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:33:20 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/11 15:58:28 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/13 11:38:18 by melinaaam        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ char	*substring_until_char(const char *str, char delimiter)
 		return (ft_strdup(str));
 	length = pos - str;
 	result = malloc(length + 1);
+	if (result == NULL)
+		return (NULL);
 	ft_strncpy(result, str, length);
 	result[length] = '\0';
 	return (result);

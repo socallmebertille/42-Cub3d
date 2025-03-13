@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_barrier_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 17:35:19 by memotyle          #+#    #+#             */
-/*   Updated: 2025/03/12 17:41:49 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/13 15:01:30 by melinaaam        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ void	put_img_door(t_game *game, float angle_step, float angle_start)
 	t_player	pic;
 	t_ray		ray;
 
+	toggle_barrier(game, (int)game->ray_door.map.x, (int)game->ray_door.map.y);
 	col = 0;
 	while (col < game->win_width)
 	{

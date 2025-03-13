@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parse_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:23:14 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/12 17:30:03 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/13 15:37:34 by melinaaam        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,11 @@ int	check_char(char **map, t_game *game)
 	if (game->barrier_nb)
 	{
 		game->door = malloc(sizeof(t_door) * (game->barrier_nb));
+		if (!game->door)
+			return (write_err(RED MALLOC RESET), 1);
 		recup_door(map, game);
+		if (door_surrounded(game))
+			return (1);
 	}
 	return (0);
 }

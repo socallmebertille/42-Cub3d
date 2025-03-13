@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/12 18:01:23 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/13 14:33:57 by melinaaam        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ typedef struct s_ray
 typedef struct s_door
 {
 	int			id;
+	int			step;
 	int			barrier_o_c;
 	int			barrier_framecount;
 	t_player	pos;
@@ -168,6 +169,10 @@ int				check_value(t_game *game, t_param *param);
 // ---------------- map_parse_bonus.c -------------------------
 int				recup_map(char **file, t_game *game);
 int				check_char(char **map, t_game *game);
+
+// ---------------- map_parse_bonus.c -------------------------
+int				door_surrounded(t_game *game);
+int				check_one_door(t_game *game, int i, int j);
 
 // ---------------- map_access_bonus.c.c -------------------------
 int				flood_fill_check(t_game *game);

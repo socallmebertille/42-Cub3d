@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_file_parse_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:22:12 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/10 16:15:55 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/13 11:37:43 by melinaaam        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ void	map_file_parse(t_game *game)
 	t_param	*param;
 
 	param = malloc(sizeof(t_param));
+	if (!param)
+	{
+		write_err(RED MALLOC RESET);
+		exit (EXIT_FAILURE);
+	}
 	ft_bzero(param, sizeof(t_param));
 	game->param = param;
 	if (map_texture(game, game->param) || map_texture2(game, game->param)

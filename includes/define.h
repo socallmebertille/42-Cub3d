@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/08 14:25:15 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/13 15:34:12 by melinaaam        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINE_H
 # define DEFINE_H
-
+/*Colors*/
 # define RESET "\e[0m"
 # define RED "\e[1;91m"
 # define GREEN "\e[1;92m"
@@ -23,18 +23,27 @@
 # define WHITE "\e[1;97m"
 # define BLACK "\e[1;90m"
 # define GRAY "\e[1;37m"
+
+/*Error messages*/
 # define MALLOC "Error\nMalloc failed\n"
 # define NO_PATH_NO "Error\nInvalid path to NO texture.\n"
 # define NO_PATH_SO "Error\nInvalid path to SO texture.\n"
 # define NO_PATH_WE "Error\nInvalid path to WE texture.\n"
 # define NO_PATH_EA "Error\nInvalid path to EA texture.\n"
+# define CEIL_C "Error\nProblem with ceiling color\n"
+# define FLOOR_C "Error\nProblem with floor color\n"
+# define WRONG_C_C "Error\nChoose only one ceiling color\n"
+# define WRONG_F_C "Error\nChoose only one floor color\n"
 # define MISS_WALL "Error\nThe map isn't surrounded by walls\n"
 # define WRONG_CHAR "Error\nThere is at least one wrong character in map\n"
+# define DOOR "Error : Door not properly placed\n"
 # define STRAIGHT "textures/handlebars/handlebars_straight.xpm"
 # define LEFT0 "textures/handlebars/handlebars_left_0.xpm"
 # define LEFT1 "textures/handlebars/handlebars_left_1.xpm"
 # define RIGHT0 "textures/handlebars/handlebars_right_0.xpm"
 # define RIGHT1 "textures/handlebars/handlebars_right_1.xpm"
+
+/*Define*/
 # define MAX_MAP_WIDTH 100
 # define MAX_MAP_HEIGHT 100
 # define PX 10 //nb de pixels d'une case de mini map

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   recup_color_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
+/*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 17:34:54 by bertille          #+#    #+#             */
-/*   Updated: 2025/03/10 18:31:53 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/13 15:34:56 by melinaaam        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ static int	check_colors(t_game *game, t_param *param)
 	{
 		if (!ft_isdigit(param->ceiling_color[i])
 			&& param->ceiling_color[i] != ',')
-			return (write_err(RED "Error\nProblem with ceiling color\n" RESET),
-				1);
+			return (write_err(RED CEIL_C RESET), 1);
 		i++;
 	}
 	i = 0;
@@ -34,7 +33,7 @@ static int	check_colors(t_game *game, t_param *param)
 	{
 		if (!ft_isdigit(param->floor_color[i])
 			&& param->floor_color[i] != ',')
-			return (write_err(RED "Error\nProblem with floor color\n" RESET), 1);
+			return (write_err(RED FLOOR_C RESET), 1);
 		i++;
 	}
 	return (check_value(game, param));
@@ -75,8 +74,8 @@ int	map_color(t_game *game, t_param *param)
 		i++;
 	}
 	if (!f || f > 1 || !param->floor_color)
-		return (write_err(RED "Error\nChoose only one floor color\n" RESET), 1);
+		return (write_err(RED WRONG_F_C RESET), 1);
 	if (!c || c > 1 || !param->ceiling_color)
-		return (write_err(RED "Error\nChoose only one ceiling color\n" RESET), 1);
+		return (write_err(RED WRONG_C_C RESET), 1);
 	return (check_colors(game, param));
 }
