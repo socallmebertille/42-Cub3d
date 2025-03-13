@@ -1,7 +1,3 @@
-#############################################
-#               VARIABLES GLOBALES          #
-#############################################
-
 NAME            =   cub3d
 BONUS           =   cub3d_bonus
 
@@ -63,10 +59,7 @@ SRCS_BONUS      =   $(addprefix $(SRCS_DIR_BONUS)/,$(SRCS_N_BONUS))
 OBJS_BONUS      =   $(addprefix $(OBJ_DIR_BONUS)/,$(OBJS_N_BONUS))
 
 INCLUDES        =   $(addprefix -I, $(INCDIR)) -I$(LIBFT_DIR)
-
-#############################################
-#                 COULEURS                  #
-#############################################
+LIBS = -L./minilibx-linux -lmlx -lXext -lX11 -lm -lz -L$(LIBFT_DIR) -lft
 
 PINK   = \033[38;5;213m
 BLUE   = \033[38;5;75m
@@ -75,22 +68,8 @@ YELLOW = \033[38;5;220m
 CYAN   = \033[38;5;45m
 RESET  = \033[0m
 BOLD   = \033[1m
-
-#############################################
-#                LIBRAIRIES                 #
-#############################################
-
-LIBS = -L./minilibx-linux -lmlx -lXext -lX11 -lm -lz -L$(LIBFT_DIR) -lft
-
-#############################################
-#       ÉMOJIS (SANS MODIFICATEUR PEAU)     #
-#############################################
 BIKE_MAIN  = 🚴
 BIKE_BONUS = 🚵
-🚦🚧🚴🏻‍♀️🚵🏻‍♀️🧘🏻‍♀️🧽🚳🏃🏻‍♀️‍➡️
-#############################################
-#             RÈGLES PRINCIPALES            #
-#############################################
 
 all: $(NAME)
 bonus: $(BONUS)
