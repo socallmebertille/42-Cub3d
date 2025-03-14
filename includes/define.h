@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
+/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/13 15:34:12 by melinaaam        ###   ########.fr       */
+/*   Updated: 2025/03/14 14:37:31 by memotyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define WRONG_F_C "Error\nChoose only one floor color\n"
 # define MISS_WALL "Error\nThe map isn't surrounded by walls\n"
 # define WRONG_CHAR "Error\nThere is at least one wrong character in map\n"
-# define DOOR "Error : Door not properly placed\n"
+# define DOOR "Error\nDoor not properly placed\n"
 # define STRAIGHT "textures/handlebars/handlebars_straight.xpm"
 # define LEFT0 "textures/handlebars/handlebars_left_0.xpm"
 # define LEFT1 "textures/handlebars/handlebars_left_1.xpm"

@@ -105,7 +105,7 @@ show-bike-bonus:
 	@printf "$(CYAN) %s$(RESET)\r" "$$(cat .bike_bonus)"
 
 $(OBJ_DIR)/%.o: $(SRCS_DIR)/%.c | $(OBJ_DIR)
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ > /dev/null 2>&1
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ 
 	@$(MAKE) --no-print-directory show-bike-main
 
 $(OBJ_DIR_BONUS)/%.o: $(SRCS_DIR_BONUS)/%.c | $(OBJ_DIR_BONUS)
