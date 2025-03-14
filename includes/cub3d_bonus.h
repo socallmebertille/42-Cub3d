@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/14 13:18:48 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/14 16:36:36 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,8 @@ typedef struct s_game
 	char		**map;
 	char		**check_map;
 	t_player	player;
+	t_player	dir;
+	t_player	plane;
 	t_player	mouse;
 	t_keys		keys;
 	t_ray		ray;

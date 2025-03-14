@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_game_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:40:43 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/11 15:57:58 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:24:34 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 
 void	move_view_west(t_game *game)
 {
+	double	angle;
+	double	dir_x;
+	double	plane_x;
+
+	angle = -0.02;
+	dir_x = game->dir.x;
+	plane_x = game->plane.x;
+	game->dir.x = game->dir.x * cos(angle) - game->dir.y * sin(angle);
+	game->dir.y = dir_x * sin(angle) + game->dir.y * cos(angle);
+	game->plane.x = game->plane.x * cos(angle) - game->plane.y * sin(angle);
+	game->plane.y = plane_x * sin(angle) + game->plane.y * cos(angle);
 	game->degree -= 1;
 	if (game->degree == -1)
 		game->degree = 359;
@@ -25,6 +36,17 @@ void	move_view_west(t_game *game)
 
 void	move_view_east(t_game *game)
 {
+	double	angle;
+	double	dir_x;
+	double	plane_x;
+
+	angle = 0.02;
+	dir_x = game->dir.x;
+	plane_x = game->plane.x;
+	game->dir.x = game->dir.x * cos(angle) - game->dir.y * sin(angle);
+	game->dir.y = dir_x * sin(angle) + game->dir.y * cos(angle);
+	game->plane.x = game->plane.x * cos(angle) - game->plane.y * sin(angle);
+	game->plane.y = plane_x * sin(angle) + game->plane.y * cos(angle);
 	game->degree += 1;
 	if (game->degree == -1)
 		game->degree = 359;
@@ -48,10 +70,10 @@ int	render_game(t_game *game)
 		move_view_west(game);
 	else if (game->keys.view_east)
 		move_view_east(game);
-	put_img(game, (M_PI / 3) / game->win_width,
-		(float)game->angle - (M_PI / 6));
-	put_img_door(game, (M_PI / 3) / game->win_width,
-		(float)game->angle - (M_PI / 6));
+	put_img(game, (M_PI / 3) / game->win_width, (float)game->angle - (M_PI
+			/ 6));
+	put_img_door(game, (M_PI / 3) / game->win_width, (float)game->angle - (M_PI
+			/ 6));
 	render_mini_map(game);
 	render_handlebars(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);

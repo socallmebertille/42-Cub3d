@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parse_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:23:14 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/14 15:40:43 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/14 16:37:26 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,26 @@ static void	recup_player(char *map, t_game *game, int y)
 				game->degree = 0;
 			game->angle = (float)game->degree * M_PI / 180.0;
 			game->angle -= (0 - (2 * M_PI));
+			if (map[i] == 'N')
+			{
+				game->dir = (t_player){.x = 0, .y = -1};
+				game->plane = (t_player){.x = 0.66, .y = 0};
+			}
+			else if (map[i] == 'S')
+			{
+				game->dir = (t_player){.x = 0, .y = 1};
+				game->plane = (t_player){.x = -0.66, .y = 0};
+			}
+			else if (map[i] == 'W')
+			{
+				game->dir = (t_player){.x = -1, .y = 0};
+				game->plane = (t_player){.x = 0, .y = -0.66};
+			}
+			else if (map[i] == 'E')
+			{
+				game->dir = (t_player){.x = 1, .y = 0};
+				game->plane = (t_player){.x = 0, .y = 0.66};
+			}
 			break ;
 		}
 		i++;
