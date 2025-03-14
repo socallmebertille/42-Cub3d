@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:52:35 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/11 14:16:46 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/14 15:49:44 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,13 @@ static t_img	*init_pic(t_game *game, t_img *img, int id)
 		img->img = mlx_xpm_file_to_image(game->mlx, game->param->ea,
 				&img->w_width, &img->w_height);
 	if (!img->img)
-		return (write_err("Error\nFailed to load textures\n"), free_all(game),
-			exit(1), NULL);
+		return (write_err(RED "Error\nFailed to load textures\n" RESET),
+			quite_game(game), NULL);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_len,
 			&img->endian);
 	if (!img->addr)
-		return (write_err("Error\nFailed to get image data address\n"),
-			free_all(game), exit(1), NULL);
+		return (write_err(RED "Error\nFailed to get image data address\n" RESET),
+			quite_game(game), NULL);
 	return (img);
 }
 
@@ -83,21 +83,21 @@ static void	mlx_initialize(t_game *game)
 {
 	game->mlx = mlx_init();
 	if (!game->mlx)
-		return (write_err(MALLOC), free_all(game), exit(1));
+		return (write_err(RED MALLOC RESET), quite_game(game));
 	mlx_get_screen_size(game->mlx, &game->win_width, &game->win_height);
 	game->win = mlx_new_window(game->mlx, game->win_width, game->win_height,
 			"Cub3D");
 	if (!game->win)
-		return (write_err(MALLOC), free_all(game), exit(1));
+		return (write_err(RED MALLOC RESET), quite_game(game));
 	game->img.img = mlx_new_image(game->mlx, game->win_width, game->win_height);
 	if (!game->img.img)
-		return (write_err("Error\nDisplay window failed\n"), free_all(game),
-			exit(1));
+		return (write_err(RED "Error\nDisplay window failed\n" RESET),
+			quite_game(game));
 	game->img.addr = mlx_get_data_addr(game->img.img, &game->img.bpp,
 			&game->img.line_len, &game->img.endian);
 	game->pics = (t_pics *)malloc(sizeof(t_pics));
 	if (!game->pics)
-		return (write_err(MALLOC), free_all(game), exit(1));
+		return (write_err(RED MALLOC RESET), quite_game(game));
 	ft_bzero(game->pics, sizeof(t_pics));
 	game->pics->wall_n = init_pic(game, game->pics->wall_n, 1);
 	game->pics->wall_s = init_pic(game, game->pics->wall_s, 2);

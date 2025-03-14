@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_access_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:27:44 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/13 15:41:54 by melinaaam        ###   ########.fr       */
+/*   Updated: 2025/03/14 15:44:05 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ static int	surrounded_by_walls(t_game *game, int y, int x)
 		return (0);
 	if ((x == 0 || x == (int)ft_strlen(game->check_map[y]) - 1)
 		&& (game->check_map[y][x] != '1' || game->check_map[y][x] != ' '))
+		return (0);
+	if (!game->check_map[y - 1][x] || !game->check_map[y + 1][x]
+		|| !game->check_map[y][x - 1] || !game->check_map[y][x + 1])
 		return (0);
 	return (1);
 }
