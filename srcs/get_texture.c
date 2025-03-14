@@ -6,38 +6,46 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 17:23:47 by bertille          #+#    #+#             */
-/*   Updated: 2025/01/28 09:41:10 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/14 14:27:12 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	get_text(int letter, char *str, t_param *param)
+static int	get_text2(int letter, char *str, t_param *param, int i)
 {
-	if (letter == 1 && !param->no)
-	{
-		param->no = ft_substr(str, 3, ft_strlen(str) - 3);
-		if (!param->no)
-			return (0);
-	}
-	if (letter == 2 && !param->so)
-	{
-		param->so = ft_substr(str, 3, ft_strlen(str) - 3);
-		if (!param->so)
-			return (0);
-	}
 	if (letter == 3 && !param->we)
 	{
-		param->we = ft_substr(str, 3, ft_strlen(str) - 3);
+		param->we = ft_substr(str, i, ft_strlen(str) - i);
 		if (!param->we)
-			return (0);
+			return (write_err(RED MALLOC RESET), 0);
 	}
 	if (letter == 4 && !param->ea)
 	{
-		param->ea = ft_substr(str, 3, ft_strlen(str) - 3);
+		param->ea = ft_substr(str, i, ft_strlen(str) - i);
 		if (!param->ea)
-			return (0);
+			return (write_err(RED MALLOC RESET), 0);
 	}
+	return (1);
+}
+
+static int	get_text(int letter, char *str, t_param *param, int i)
+{
+	while (str[i] == ' ')
+		i++;
+	if (letter == 1 && !param->no)
+	{
+		param->no = ft_substr(str, i, ft_strlen(str) - i);
+		if (!param->no)
+			return (write_err(RED MALLOC RESET), 0);
+	}
+	if (letter == 2 && !param->so)
+	{
+		param->so = ft_substr(str, i, ft_strlen(str) - i);
+		if (!param->so)
+			return (write_err(RED MALLOC RESET), 0);
+	}
+	get_text2(letter, str, param, i);
 	return (1);
 }
 
@@ -53,14 +61,16 @@ int	map_texture2(t_game *game, t_param *param)
 	while (game->map_file[i])
 	{
 		if (!ft_strncmp(game->map_file[i], "WE ", 3))
-			we += get_text(3, game->map_file[i], param);
+			we += get_text(3, game->map_file[i], param, 3);
 		else if (!ft_strncmp(game->map_file[i], "EA ", 3))
-			ea += get_text(4, game->map_file[i], param);
+			ea += get_text(4, game->map_file[i], param, 3);
 		i++;
 	}
-	if (!we || we > 1 || !param->we)
+	if (!param->we || !param->ea)
+		return (1);
+	if (!we || we > 1)
 		return (write_err(RED "Error\nChoose juste one WE param\n" RESET), 1);
-	if (!ea || ea > 1 || !param->ea)
+	if (!ea || ea > 1)
 		return (write_err(RED "Error\nChoose juste one EA param\n" RESET), 1);
 	return (0);
 }
@@ -77,14 +87,16 @@ int	map_texture(t_game *game, t_param *param)
 	while (game->map_file[i])
 	{
 		if (!ft_strncmp(game->map_file[i], "NO ", 3))
-			no += get_text(1, game->map_file[i], param);
+			no += get_text(1, game->map_file[i], param, 3);
 		else if (!ft_strncmp(game->map_file[i], "SO ", 3))
-			so += get_text(2, game->map_file[i], param);
+			so += get_text(2, game->map_file[i], param, 3);
 		i++;
 	}
-	if (!no || no > 1 || !param->no)
+	if (!param->no || !param->so)
+		return (1);
+	if (!no || no > 1)
 		return (write_err(RED "Error\nChoose juste one NO param\n" RESET), 1);
-	if (!so || so > 1 || !param->so)
+	if (!so || so > 1)
 		return (write_err(RED "Error\nChoose juste one SO param\n" RESET), 1);
 	return (0);
 }

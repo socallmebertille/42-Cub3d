@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_file_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bertille <bertille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:20:22 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/05 17:08:44 by bertille         ###   ########.fr       */
+/*   Updated: 2025/03/14 13:54:37 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	check_map_file(char *map_file, t_game *game)
 		return (write_err(RED "Error\nIncorrect map file\n" RESET), 1);
 	game->map_fd = open(map_file, O_RDONLY);
 	if (game->map_fd < 0)
-		return (write_err(RED "Error\nMap file exist ?!\n"), 1);
+		return (write_err(RED "Error\nMap file exist ?!\n" RESET), 1);
 	file_map_content = read_map(game->map_fd);
 	if (!file_map_content)
 		return (close(game->map_fd),

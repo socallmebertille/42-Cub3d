@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   recup_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 17:34:54 by bertille          #+#    #+#             */
-/*   Updated: 2025/03/13 15:32:14 by melinaaam        ###   ########.fr       */
+/*   Updated: 2025/03/14 14:14:08 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ static int	get_color(int letter, char *str, t_param *param)
 	{
 		param->floor_color = ft_substr(str, 2, ft_strlen(str) - 2);
 		if (!param->floor_color)
-			return (0);
+			return (write_err(RED MALLOC RESET), 0);
 	}
 	if (letter == 2 && !param->ceiling_color)
 	{
 		param->ceiling_color = ft_substr(str, 2, ft_strlen(str) - 2);
 		if (!param->floor_color)
-			return (0);
+			return (write_err(RED MALLOC RESET), 0);
 	}
 	return (1);
 }
@@ -73,9 +73,11 @@ int	map_color(t_game *game, t_param *param)
 			c += get_color(2, game->map_file[i], param);
 		i++;
 	}
-	if (!f || f > 1 || !param->floor_color)
+	if (!param->floor_color || !param->ceiling_color)
+		return (1);
+	if (!f || f > 1)
 		return (write_err(RED WRONG_F_C RESET), 1);
-	if (!c || c > 1 || !param->ceiling_color)
+	if (!c || c > 1)
 		return (write_err(RED WRONG_C_C RESET), 1);
 	return (check_colors(game, param));
 }

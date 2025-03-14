@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parse_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:23:14 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/13 15:51:39 by melinaaam        ###   ########.fr       */
+/*   Updated: 2025/03/14 13:57:57 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ static void	malloc_map(char **file, t_game *game)
 	}
 	game->map = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!game->map)
-		write_err(RED MALLOC RESET);
+		return (write_err(RED MALLOC RESET));
 	game->check_map = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!game->check_map)
-		write_err(RED MALLOC RESET);
+		return (write_err(RED MALLOC RESET));
 }
 
 int	recup_map(char **file, t_game *game)
