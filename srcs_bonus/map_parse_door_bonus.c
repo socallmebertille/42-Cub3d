@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parse_door_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:44:31 by melinaaam         #+#    #+#             */
-/*   Updated: 2025/03/13 15:50:44 by melinaaam        ###   ########.fr       */
+/*   Updated: 2025/03/14 13:33:00 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_one_door(t_game *game, int i, int j)
 		if (game->map[i][j - 1] == '1' && game->map[i][j + 1] == '1')
 			hor = 1;
 	}
-	if (i > 0 && i < game->height_map - 1)
+	if (game->map[i - 1][j] && game->map[i + 1][j])
 	{
 		if (game->map[i - 1][j] == '1' && game->map[i + 1][j] == '1')
 			vert = 1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:00:43 by memotyle          #+#    #+#             */
-/*   Updated: 2025/03/12 17:31:02 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/14 13:22:54 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	is_wall_collision(t_game *game, float x, float y)
 	if (game->map[map_y][map_x] == 'D')
 	{
 		id = wich_door(game, map_x, map_y);
-		if (game->door[id].barrier_o_c == 0)
+		if (game->door[id].barrier_o_c < 3)
 			return (1);
 	}
 	return (0);

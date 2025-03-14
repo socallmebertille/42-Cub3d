@@ -3,27 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   barrier_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:57:42 by memotyle          #+#    #+#             */
-/*   Updated: 2025/03/13 15:21:33 by melinaaam        ###   ########.fr       */
+/*   Updated: 2025/03/14 13:18:39 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-// static void	counter(t_game *game, int id)
-// {
-// 	int	count;
+int	wich_door(t_game *game, int x, int y)
+{
+	int	count;
 
-// 	count = 0;
-// 	while (count < 50)
-// 		count++;
-// 	// if (open == 1)
-// 	// 	game->door[id].barrier_o_c++;
-// 	// else if (!open)
-// 	// 	game->door[id].barrier_o_c--;
-// }
+	count = 0;
+	while (count < game->barrier_nb)
+	{
+		if (x == (int)game->door[count].pos.x
+			&& y == (int)game->door[count].pos.y)
+			return (game->door[count].id);
+		count++;
+	}
+	return (-1);
+}
 
 void	toggle_barrier(t_game *game, int x, int y)
 {

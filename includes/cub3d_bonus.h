@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melinaaam <melinaaam@student.42.fr>        +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:55:54 by kepouliq          #+#    #+#             */
-/*   Updated: 2025/03/13 15:59:51 by melinaaam        ###   ########.fr       */
+/*   Updated: 2025/03/14 13:18:48 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,10 +218,10 @@ char			get_ray_to_door(t_game *game, int x);
 
 // ---------------- barrier_bonus.c-----------------------
 void			toggle_barrier(t_game *game, int x, int y);
+int				wich_door(t_game *game, int x, int y);
 
 // ---------------- render_handlebars_bonus.c-----------------------
 void			put_img_door(t_game *game, float angle_step, float angle_start);
-int				wich_door(t_game *game, int x, int y);
 
 // ---------------- render_game_bonus.c-----------------------
 void			move_view_west(t_game *game);
