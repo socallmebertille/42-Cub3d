@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:40:43 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/10 12:26:45 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:33:01 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 
 static void	move_view_west(t_game *game)
 {
+	double	angle;
+	double	dir_x;
+	double	plane_x;
+
+	angle = -0.02;
+	dir_x = game->dir.x;
+	plane_x = game->plane.x;
+	game->dir.x = game->dir.x * cos(angle) - game->dir.y * sin(angle);
+	game->dir.y = dir_x * sin(angle) + game->dir.y * cos(angle);
+	game->plane.x = game->plane.x * cos(angle) - game->plane.y * sin(angle);
+	game->plane.y = plane_x * sin(angle) + game->plane.y * cos(angle);
 	game->degree -= 1;
 	if (game->degree == -1)
 		game->degree = 359;
@@ -24,6 +35,17 @@ static void	move_view_west(t_game *game)
 
 static void	move_view_east(t_game *game)
 {
+	double	angle;
+	double	dir_x;
+	double	plane_x;
+
+	angle = 0.02;
+	dir_x = game->dir.x;
+	plane_x = game->plane.x;
+	game->dir.x = game->dir.x * cos(angle) - game->dir.y * sin(angle);
+	game->dir.y = dir_x * sin(angle) + game->dir.y * cos(angle);
+	game->plane.x = game->plane.x * cos(angle) - game->plane.y * sin(angle);
+	game->plane.y = plane_x * sin(angle) + game->plane.y * cos(angle);
 	game->degree += 1;
 	if (game->degree == -1)
 		game->degree = 359;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_img_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memotyle <memotyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:59:04 by saberton          #+#    #+#             */
-/*   Updated: 2025/03/12 17:36:31 by memotyle         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:31:25 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,9 +135,10 @@ void	put_img(t_game *game, float angle_step, float angle_start)
 		ft_bzero(&ray, sizeof(t_ray));
 		ft_bzero(&pic, sizeof(t_player));
 		game->ray.camera = 2 * col / (double)game->win_width - 1;
+		game->ray.ray_dir.x = game->dir.x + game->plane.x * game->ray.camera;
+		game->ray.ray_dir.y = game->dir.y + game->plane.y * game->ray.camera;
 		game->ray.delta.x = fabs(1 / game->ray.ray_dir.x);
 		game->ray.delta.y = fabs(1 / game->ray.ray_dir.y);
-		game->ray.ray_dir = (t_player){cos(ray_angle), sin(ray_angle)};
 		game->ray.map = (t_player){(int)game->player.x, (int)game->player.y};
 		init_ray(game);
 		game->ray.lineheight = (int)(game->win_height

@@ -6,7 +6,7 @@
 /*   By: saberton <saberton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 16:00:43 by memotyle          #+#    #+#             */
-/*   Updated: 2025/03/14 13:22:54 by saberton         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:31:38 by saberton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	move_north(t_game *game)
 	float	new_x;
 	float	new_y;
 
-	new_x = game->player.x + SPEED * sin(game->angle + M_PI_2);
-	new_y = game->player.y - SPEED * cos(game->angle + M_PI_2);
+	new_x = game->player.x + game->dir.x * 0.04;
+	new_y = game->player.y + game->dir.y * 0.04;
 	if (!is_wall_collision(game, new_x, game->player.y))
 		game->player.x = new_x;
 	if (!is_wall_collision(game, game->player.x, new_y))
@@ -57,8 +57,8 @@ void	move_south(t_game *game)
 	float	new_x;
 	float	new_y;
 
-	new_x = game->player.x - SPEED * sin(game->angle + M_PI_2);
-	new_y = game->player.y + SPEED * cos(game->angle + M_PI_2);
+	new_x = game->player.x - game->dir.x * 0.04;
+	new_y = game->player.y - game->dir.y * 0.04;
 	if (!is_wall_collision(game, new_x, game->player.y))
 		game->player.x = new_x;
 	if (!is_wall_collision(game, game->player.x, new_y))
@@ -70,8 +70,8 @@ void	move_west(t_game *game)
 	float	new_x;
 	float	new_y;
 
-	new_x = game->player.x - SPEED * cos(game->angle + M_PI_2);
-	new_y = game->player.y - SPEED * sin(game->angle + M_PI_2);
+	new_x = game->player.x - game->plane.x * 0.04;
+	new_y = game->player.y - game->plane.y * 0.04;
 	if (!is_wall_collision(game, new_x, game->player.y))
 		game->player.x = new_x;
 	if (!is_wall_collision(game, game->player.x, new_y))
@@ -84,8 +84,8 @@ void	move_east(t_game *game)
 	float	new_x;
 	float	new_y;
 
-	new_x = game->player.x + SPEED * cos(game->angle + M_PI_2);
-	new_y = game->player.y + SPEED * sin(game->angle + M_PI_2);
+	new_x = game->player.x + game->plane.x * 0.04;
+	new_y = game->player.y + game->plane.y * 0.04;
 	if (!is_wall_collision(game, new_x, game->player.y))
 		game->player.x = new_x;
 	if (!is_wall_collision(game, game->player.x, new_y))
