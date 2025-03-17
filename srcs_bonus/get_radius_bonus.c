@@ -29,7 +29,9 @@ void	len_raycasting(t_game *game, float angle, t_player *hit)
 	{
 		if (game->map[(int)(y + dy * step_size)][(int)(x + dx
 				* step_size)] == '1' || game->map[(int)(y + dy
-				* step_size)][(int)(x + dx * step_size)] == 'D')
+				* step_size)][(int)(x + dx * step_size)] == 'D'
+			|| game->map[(int)(y + dy * step_size)][(int)(x + dx
+				* step_size)] == ' ')
 			break ;
 		x += dx * step_size;
 		y += dy * step_size;
