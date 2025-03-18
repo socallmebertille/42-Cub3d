@@ -5,6 +5,8 @@ Cub3D est un projet graphique en C inspiré du jeu culte Wolfenstein 3D, génér
 
 ## Check my demo
 
+[![Watch me on YouTube](https://img.shields.io/badge/Watch_me_on_YouTube-ff0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/F2-tP8NMRDc?si=Schpeiqpf7ek2NFS)
+
 <p align="center">
   <img src="cub3d_bonus.gif" alt="my demo" width="1000">
 </p>
